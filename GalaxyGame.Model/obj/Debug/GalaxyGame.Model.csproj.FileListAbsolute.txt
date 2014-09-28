@@ -1,0 +1,5 @@
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Model\obj\Debug\GalaxyGame.Model.csprojResolveAssemblyReference.cache
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Model\bin\Debug\GalaxyGame.Model.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Model\bin\Debug\GalaxyGame.Model.pdb
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Model\obj\Debug\GalaxyGame.Model.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Model\obj\Debug\GalaxyGame.Model.pdb

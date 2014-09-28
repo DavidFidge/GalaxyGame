@@ -1,0 +1,17 @@
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\GalaxyGame.Host.dll.config
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\GalaxyGame.Host.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\GalaxyGame.Host.pdb
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\obj\Debug\GalaxyGame.Host.csprojResolveAssemblyReference.cache
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\obj\Debug\GalaxyGame.Host.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\obj\Debug\GalaxyGame.Host.pdb
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\Castle.Core.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\Castle.Services.Logging.Log4netIntegration.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\Castle.Windsor.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\log4net.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\Castle.Core.xml
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\Castle.Windsor.xml
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\log4net.xml
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\EntityFramework.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\EntityFramework.SqlServer.dll
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\EntityFramework.xml
+C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.Host\bin\Debug\EntityFramework.SqlServer.xml
