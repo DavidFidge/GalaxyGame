@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GalaxyGame.Host")]
+[assembly: AssemblyTitle("GalaxyGame.Contract")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GalaxyGame.Host")]
+[assembly: AssemblyProduct("GalaxyGame.Contract")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3b808b98-f806-40a8-96af-bb71579c0fcf")]
+[assembly: Guid("99fa5315-1fce-4ccc-be68-cc1545553498")]
 
 // Version information for an assembly consists of the following four values:
 //
