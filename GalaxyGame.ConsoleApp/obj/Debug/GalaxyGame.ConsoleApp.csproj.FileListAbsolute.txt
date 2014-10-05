@@ -1,14 +1,1 @@
 C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.ConsoleApp.exe.config
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.ConsoleApp.exe
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.ConsoleApp.pdb
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\EntityFramework.dll
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\EntityFramework.SqlServer.dll
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\EntityFramework.xml
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\EntityFramework.SqlServer.xml
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\obj\Debug\GalaxyGame.ConsoleApp.csprojResolveAssemblyReference.cache
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\obj\Debug\GalaxyGame.ConsoleApp.exe
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\obj\Debug\GalaxyGame.ConsoleApp.pdb
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.DataLayer.dll
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.Model.dll
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.DataLayer.pdb
-C:\dev\GalaxyGame\GalaxyGame\GalaxyGame.ConsoleApp\bin\Debug\GalaxyGame.Model.pdb
