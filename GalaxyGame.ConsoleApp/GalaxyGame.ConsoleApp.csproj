@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GalaxyGame.Core\GalaxyGame.Core.csproj">
+      <Project>{1afe20a9-369b-4014-85ae-955d5c3a2d1d}</Project>
+      <Name>GalaxyGame.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GalaxyGame.DataLayer\GalaxyGame.DataLayer.csproj">
       <Project>{21620ae2-ca22-4bdc-abbe-00977f5b93a7}</Project>
       <Name>GalaxyGame.DataLayer</Name>

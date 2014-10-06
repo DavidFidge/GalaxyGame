@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a2c6f1e0f914f968d46814d21efd37f" Name="Diagram1">
+        <EntityTypeShape EntityType="GalaxyGameModel.C__MigrationHistory" Width="1.5" PointX="7.125" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalaxyGameModel.Galaxy" Width="1.5" PointX="4" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalaxyGameModel.SolarSystem" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalaxyGameModel.SpaceObject" Width="1.5" PointX="4.875" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GalaxyGameModel.SubSystem" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="GalaxyGameModel.FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId" ManuallyRouted="false" />
+        <AssociationConnector Association="GalaxyGameModel.FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId" ManuallyRouted="false" />
+        <AssociationConnector Association="GalaxyGameModel.FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId" ManuallyRouted="false" />
+        <AssociationConnector Association="GalaxyGameModel.FK_dbo_SubSystems_dbo_SubSystems_SubSystemId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

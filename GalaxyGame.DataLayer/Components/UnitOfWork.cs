@@ -1,9 +1,6 @@
-﻿using System;
-using GalaxyGame.Model;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
+﻿using GalaxyGame.Core.Interfaces;
 
-namespace GalaxyGame.DataLayer
+namespace GalaxyGame.DataLayer.Components
 {
     public class UnitOfWork : IUnitOfWork
     {

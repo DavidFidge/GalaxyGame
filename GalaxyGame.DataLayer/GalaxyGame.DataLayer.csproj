@@ -33,6 +33,9 @@
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.3.3.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Facilities.Logging">
+      <HintPath>..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Services.Logging.Log4netIntegration">
       <HintPath>..\packages\Castle.Core-log4net.3.3.1\lib\net45\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
     </Reference>
@@ -58,13 +61,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\libraries\Unity3D\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityFramework\BaseContext.cs" />
     <Compile Include="Components\UnitOfWork.cs" />
-    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Installers\DataLayerInstaller.cs" />
     <Compile Include="EntityFramework\EntityFrameworkContext.cs" />
-    <Compile Include="Interfaces\IContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GalaxyGame.Core\GalaxyGame.Core.csproj">
+      <Project>{1afe20a9-369b-4014-85ae-955d5c3a2d1d}</Project>
+      <Name>GalaxyGame.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GalaxyGame.Model\GalaxyGame.Model.csproj">
       <Project>{9cf48e68-b036-4bad-a872-079c2fe619d4}</Project>
       <Name>GalaxyGame.Model</Name>

@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
-using GalaxyGame.Model.Space;
+using System.Linq;
 
-namespace GalaxyGame.DataLayer
+namespace GalaxyGame.Core.Interfaces
 {
     public interface IContext : IDisposable
     {

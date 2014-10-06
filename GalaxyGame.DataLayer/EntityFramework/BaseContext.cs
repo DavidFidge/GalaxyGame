@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Linq;
-using GalaxyGame.Model;
 using GalaxyGame.Model.Space;
+using GalaxyGame.Model.Unity;
 
-namespace GalaxyGame.DataLayer
+namespace GalaxyGame.DataLayer.EntityFramework
 {
     public class BaseContext : DbContext
     {
-        static BaseContext()
-        {
-        }
-
         public BaseContext()
             : base("name=GalaxyGame")
         {
@@ -19,13 +14,29 @@ namespace GalaxyGame.DataLayer
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.ComplexType<Vector3>();
+
+            modelBuilder.Entity<Exploration>();
             modelBuilder.Entity<Galaxy>();
+            modelBuilder.Entity<GalaxySector>();
+            modelBuilder.Entity<GalaxySectorLink>()
+                .HasRequired(gsl => gsl.SectorFrom)
+                .WithMany(gs => gs.SectorLinks)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Moon>();
             modelBuilder.Entity<Planet>();
+            modelBuilder.Entity<Player>();
+            modelBuilder.Entity<SolarSystem>();
             modelBuilder.Entity<SpaceObject>();
             modelBuilder.Entity<Star>();
             modelBuilder.Entity<SubSystem>();
-            modelBuilder.Entity<SolarSystem>();
+            modelBuilder.Entity<SystemPosition>();
+            modelBuilder.Entity<SystemSector>();
+            modelBuilder.Entity<User>();
+
+            modelBuilder.Properties<DateTime>()
+                .Configure(c => c.HasColumnType("datetime2"));
 
             base.OnModelCreating(modelBuilder);
         }

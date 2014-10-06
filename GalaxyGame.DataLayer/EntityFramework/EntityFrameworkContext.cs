@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using GalaxyGame.Model.Space;
+using GalaxyGame.Core.Interfaces;
 
-namespace GalaxyGame.DataLayer
+namespace GalaxyGame.DataLayer.EntityFramework
 {
     public class EntityFrameworkContext : IContext
     {

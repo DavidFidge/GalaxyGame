@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace GalaxyGame.DataLayer
+namespace GalaxyGame.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {

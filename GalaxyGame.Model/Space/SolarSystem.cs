@@ -3,17 +3,18 @@ using System.Collections.Generic;
 
 namespace GalaxyGame.Model.Space
 {
-    public class SolarSystem : IEntity
+    public class SolarSystem : Entity
     {
         public SolarSystem()
         {
             SpaceObjects = new HashSet<SpaceObject>();
         }
 
-        public Guid Id { get; set; }
-        public Guid GalaxyId { get; set; }
+        public virtual string Name { get; set; }
 
-        public virtual Galaxy Galaxy { get; set; }
+        public Guid GalaxyId { get; set; }
+        public virtual GalaxySector GalaxySector { get; set; }
+
         public virtual ICollection<SpaceObject> SpaceObjects { get; set; }
     }
 }

@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GalaxyGameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Galaxies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SolarSystems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GalaxyId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpaceObjects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SystemId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SubSystemId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubSystems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SubSystemId" Type="uniqueidentifier" />
+        </EntityType>
+        <Association Name="FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId">
+          <End Role="Galaxies" Type="Self.Galaxies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SolarSystems" Type="Self.SolarSystems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galaxies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SolarSystems">
+              <PropertyRef Name="GalaxyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId">
+          <End Role="SolarSystems" Type="Self.SolarSystems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpaceObjects" Type="Self.SpaceObjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolarSystems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpaceObjects">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId">
+          <End Role="SubSystems" Type="Self.SubSystems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpaceObjects" Type="Self.SpaceObjects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubSystems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpaceObjects">
+              <PropertyRef Name="SubSystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SubSystems_dbo_SubSystems_SubSystemId">
+          <End Role="SubSystems" Type="Self.SubSystems" Multiplicity="0..1" />
+          <End Role="SubSystems1" Type="Self.SubSystems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubSystems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubSystems1">
+              <PropertyRef Name="SubSystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GalaxyGameModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galaxies" EntityType="Self.Galaxies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolarSystems" EntityType="Self.SolarSystems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpaceObjects" EntityType="Self.SpaceObjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubSystems" EntityType="Self.SubSystems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId" Association="Self.FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId">
+            <End Role="Galaxies" EntitySet="Galaxies" />
+            <End Role="SolarSystems" EntitySet="SolarSystems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId" Association="Self.FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId">
+            <End Role="SolarSystems" EntitySet="SolarSystems" />
+            <End Role="SpaceObjects" EntitySet="SpaceObjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId" Association="Self.FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId">
+            <End Role="SubSystems" EntitySet="SubSystems" />
+            <End Role="SpaceObjects" EntitySet="SpaceObjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SubSystems_dbo_SubSystems_SubSystemId" Association="Self.FK_dbo_SubSystems_dbo_SubSystems_SubSystemId">
+            <End Role="SubSystems" EntitySet="SubSystems" />
+            <End Role="SubSystems1" EntitySet="SubSystems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GalaxyGameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Galaxy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SolarSystems" Relationship="Self.FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId" FromRole="Galaxies" ToRole="SolarSystems" />
+        </EntityType>
+        <EntityType Name="SolarSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="GalaxyId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Galaxy" Relationship="Self.FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId" FromRole="SolarSystems" ToRole="Galaxies" />
+          <NavigationProperty Name="SpaceObjects" Relationship="Self.FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId" FromRole="SolarSystems" ToRole="SpaceObjects" />
+        </EntityType>
+        <EntityType Name="SpaceObject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SystemId" Type="Guid" Nullable="false" />
+          <Property Name="SubSystemId" Type="Guid" Nullable="false" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SolarSystem" Relationship="Self.FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId" FromRole="SpaceObjects" ToRole="SolarSystems" />
+          <NavigationProperty Name="SubSystem" Relationship="Self.FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId" FromRole="SpaceObjects" ToRole="SubSystems" />
+        </EntityType>
+        <EntityType Name="SubSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SubSystemId" Type="Guid" />
+          <NavigationProperty Name="SpaceObjects" Relationship="Self.FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId" FromRole="SubSystems" ToRole="SpaceObjects" />
+          <NavigationProperty Name="SubSystems1" Relationship="Self.FK_dbo_SubSystems_dbo_SubSystems_SubSystemId" FromRole="SubSystems" ToRole="SubSystems1" />
+          <NavigationProperty Name="SubSystem1" Relationship="Self.FK_dbo_SubSystems_dbo_SubSystems_SubSystemId" FromRole="SubSystems1" ToRole="SubSystems" />
+        </EntityType>
+        <Association Name="FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId">
+          <End Role="Galaxies" Type="Self.Galaxy" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SolarSystems" Type="Self.SolarSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galaxies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SolarSystems">
+              <PropertyRef Name="GalaxyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId">
+          <End Role="SolarSystems" Type="Self.SolarSystem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpaceObjects" Type="Self.SpaceObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolarSystems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpaceObjects">
+              <PropertyRef Name="SystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId">
+          <End Role="SubSystems" Type="Self.SubSystem" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpaceObjects" Type="Self.SpaceObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubSystems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpaceObjects">
+              <PropertyRef Name="SubSystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SubSystems_dbo_SubSystems_SubSystemId">
+          <End Role="SubSystems" Type="Self.SubSystem" Multiplicity="0..1" />
+          <End Role="SubSystems1" Type="Self.SubSystem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubSystems">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubSystems1">
+              <PropertyRef Name="SubSystemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Galaxies" EntityType="Self.Galaxy" />
+          <EntitySet Name="SolarSystems" EntityType="Self.SolarSystem" />
+          <EntitySet Name="SpaceObjects" EntityType="Self.SpaceObject" />
+          <EntitySet Name="SubSystems" EntityType="Self.SubSystem" />
+          <AssociationSet Name="FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId" Association="Self.FK_dbo_SolarSystems_dbo_Galaxies_GalaxyId">
+            <End Role="Galaxies" EntitySet="Galaxies" />
+            <End Role="SolarSystems" EntitySet="SolarSystems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId" Association="Self.FK_dbo_SpaceObjects_dbo_SolarSystems_SystemId">
+            <End Role="SolarSystems" EntitySet="SolarSystems" />
+            <End Role="SpaceObjects" EntitySet="SpaceObjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId" Association="Self.FK_dbo_SpaceObjects_dbo_SubSystems_SubSystemId">
+            <End Role="SubSystems" EntitySet="SubSystems" />
+            <End Role="SpaceObjects" EntitySet="SpaceObjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SubSystems_dbo_SubSystems_SubSystemId" Association="Self.FK_dbo_SubSystems_dbo_SubSystems_SubSystemId">
+            <End Role="SubSystems" EntitySet="SubSystems" />
+            <End Role="SubSystems1" EntitySet="SubSystems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GalaxyGameModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GalaxyGameModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galaxies">
+            <EntityTypeMapping TypeName="GalaxyGameModel.Galaxy">
+              <MappingFragment StoreEntitySet="Galaxies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolarSystems">
+            <EntityTypeMapping TypeName="GalaxyGameModel.SolarSystem">
+              <MappingFragment StoreEntitySet="SolarSystems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GalaxyId" ColumnName="GalaxyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpaceObjects">
+            <EntityTypeMapping TypeName="GalaxyGameModel.SpaceObject">
+              <MappingFragment StoreEntitySet="SpaceObjects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+                <ScalarProperty Name="SubSystemId" ColumnName="SubSystemId" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubSystems">
+            <EntityTypeMapping TypeName="GalaxyGameModel.SubSystem">
+              <MappingFragment StoreEntitySet="SubSystems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SubSystemId" ColumnName="SubSystemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
