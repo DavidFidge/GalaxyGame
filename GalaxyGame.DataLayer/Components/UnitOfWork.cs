@@ -16,7 +16,7 @@ namespace GalaxyGame.DataLayer.Components
             _context = context;
         }
 
-        public void Save()
+        public void Commit()
         {
             Context.Save();
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using UnityEngine;
 
 namespace GalaxyGame.Web.Controllers
 {
@@ -22,7 +23,7 @@ namespace GalaxyGame.Web.Controllers
         }
 
         // POST: api/Move
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Vector3 value)
         {
         }
 

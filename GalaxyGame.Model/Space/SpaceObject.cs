@@ -1,9 +1,10 @@
+using GalaxyGame.Model.Interfaces;
 using System;
 using UnityEngine;
 
 namespace GalaxyGame.Model.Space
 {
-    public abstract class SpaceObject : Entity
+    public abstract class SpaceObject : Entity, IHasPosition
     {
         public virtual string Name { get; set; }
 

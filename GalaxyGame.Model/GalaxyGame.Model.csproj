@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IHasPosition.cs" />
     <Compile Include="Space\Exploration.cs" />
     <Compile Include="Space\Entity.cs" />
     <Compile Include="Space\User.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Space\SubSystem.cs" />
     <Compile Include="Space\SolarSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unity\Vector2.cs" />
     <Compile Include="Unity\Vector3.cs" />
   </ItemGroup>
   <ItemGroup>

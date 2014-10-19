@@ -7,6 +7,6 @@ namespace GalaxyGame.Core.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IContext Context { get; }
-        void Save();
+        void Commit(); 
     }
 }

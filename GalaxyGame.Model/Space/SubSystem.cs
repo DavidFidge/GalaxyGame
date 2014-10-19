@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using GalaxyGame.Model.Interfaces;
 using UnityEngine;
 
 namespace GalaxyGame.Model.Space
 {
-    public class SubSystem : Entity
+    public class SubSystem : Entity, IHasPosition
     {
         public SubSystem()
         {
