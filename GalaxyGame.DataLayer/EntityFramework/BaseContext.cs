@@ -14,7 +14,9 @@ namespace GalaxyGame.DataLayer.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.ComplexType<Vector2>();
             modelBuilder.ComplexType<Vector3>();
+            modelBuilder.ComplexType<Color>();
 
             modelBuilder.Entity<Exploration>();
             modelBuilder.Entity<Galaxy>();
@@ -34,6 +36,8 @@ namespace GalaxyGame.DataLayer.EntityFramework
             modelBuilder.Entity<SystemPosition>();
             modelBuilder.Entity<SystemSector>();
             modelBuilder.Entity<User>();
+
+            modelBuilder.Entity<SystemSetting>();
 
             modelBuilder.Properties<DateTime>()
                 .Configure(c => c.HasColumnType("datetime2"));

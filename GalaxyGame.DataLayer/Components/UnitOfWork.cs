@@ -5,6 +5,7 @@ namespace GalaxyGame.DataLayer.Components
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IContext _context;
+        public int CommittedNestLevel { get; set; }
 
         public IContext Context
         {
@@ -13,12 +14,21 @@ namespace GalaxyGame.DataLayer.Components
 
         public UnitOfWork(IContext context)
         {
+            CommittedNestLevel = 1;
             _context = context;
+
+            _context.BeginTransaction();
         }
 
         public void Commit()
         {
-            Context.Save();
+            CommittedNestLevel--;
+
+            if (CommittedNestLevel == 0)
+            {
+                Context.Save();
+                Context.Commit();
+            }
         }
 
         public void Dispose()

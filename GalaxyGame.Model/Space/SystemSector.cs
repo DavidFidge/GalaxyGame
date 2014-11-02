@@ -8,6 +8,7 @@ namespace GalaxyGame.Model.Space
     {
         public SystemSector()
         {
+            Exploration = new Exploration();
         }
 
         public virtual int X { get; set; }

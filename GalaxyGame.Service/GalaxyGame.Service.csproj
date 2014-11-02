@@ -83,9 +83,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Installers\BusInstaller.cs" />
+    <Compile Include="Interfaces\IDictionaryDataService.cs" />
+    <Compile Include="Interfaces\ISystemSettings.cs" />
+    <Compile Include="Interfaces\ISystemDataService.cs" />
+    <Compile Include="Interfaces\IGalaxyDataService.cs" />
     <Compile Include="Interfaces\IPlayerMovementDataService.cs" />
     <Compile Include="Installers\ServiceInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DictionaryDataService.cs" />
+    <Compile Include="Services\SystemSettings.cs" />
+    <Compile Include="Services\SystemDataService.cs" />
+    <Compile Include="Services\GalaxyDataService.cs" />
     <Compile Include="Services\PlayerMovementDataService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +101,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Components\" />
     <Folder Include="Handlers\" />
     <Folder Include="Messages\" />
   </ItemGroup>
@@ -109,6 +118,12 @@
       <Project>{9cf48e68-b036-4bad-a872-079c2fe619d4}</Project>
       <Name>GalaxyGame.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data\dictionaries\latin.txt">
+      <Link>Data\latin.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

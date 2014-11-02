@@ -65,6 +65,26 @@ namespace GalaxyGame.Model.Unity
             return !(v1 == v2);
         }
 
+        public override bool Equals(object obj)
+        {
+            var v2 = obj as Vector3;
+
+            if (obj == null)
+                return false;
+
+            return v2 == this;
+        }
+
+        public override int GetHashCode()
+        {
+            return X.GetHashCode() + Y.GetHashCode() + Z.GetHashCode();
+        }
+
+        public Vector3()
+        {
+            Value = UnityEngine.Vector3.zero;
+        }
+
         public Vector3(UnityEngine.Vector3 vector3)
         {
             Value = vector3;

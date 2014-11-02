@@ -11,12 +11,9 @@ namespace GalaxyGame.Service.Services
 {
     public class PlayerMovementDataService : BaseService, IPlayerMovementDataService
     {
-        private IUnitOfWorkFactory _unitOfWorkFactory;
-
         public PlayerMovementDataService(IUnitOfWorkFactory unitOfWorkFactory)
             : base(unitOfWorkFactory)
         {
-            _unitOfWorkFactory = unitOfWorkFactory;
         }
 
         public bool MoveTo(Guid playerId, Vector3 destination)
@@ -26,8 +23,6 @@ namespace GalaxyGame.Service.Services
                 var player = uow.Context.DbSet<Player>().First(p => p.Id == playerId);
 
                 player.SystemPosition.Destination = destination;
-
-                uow.Commit();
             }
 
             return true;

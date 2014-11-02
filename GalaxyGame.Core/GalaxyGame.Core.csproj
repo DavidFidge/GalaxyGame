@@ -55,11 +55,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Randomization.cs" />
+    <Compile Include="Components\RandomNumberProvider.cs" />
     <Compile Include="Components\DateTimeProvider.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Installers\CoreInstaller.cs" />
+    <Compile Include="Interfaces\IRandomization.cs" />
+    <Compile Include="Interfaces\IRandomNumberProvider.cs" />
     <Compile Include="Interfaces\IContext.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\IDateTimeProvider.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IUnitOfWorkInnerFactory.cs" />
     <Compile Include="Interfaces\IUnitOfWorkFactory.cs" />
     <Compile Include="Service\BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

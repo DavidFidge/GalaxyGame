@@ -12,7 +12,6 @@ namespace GalaxyGame.Model.Space
         public virtual Vector3 Destination { get; set; }
 
         // The position of the object.  This is a calculated field if object has an OrbitTranslation.
-        // Translation = Parent Translation + (orbit translation * cos (
         public virtual Vector3 Translation { get; set; }
 
         // The position of the object relative to other objects it may be connected to
@@ -42,7 +41,12 @@ namespace GalaxyGame.Model.Space
 
             var cosAngle = ((dateTimeProvider.Now - OrbitOriginTime).TotalSeconds * Speed)/(2 * Math.PI);
 
-            return new Vector3(parentPosition.OrbitTranslation.Value + (OrbitTranslation.Value* (float)Math.Cos(cosAngle)));
+            var parentOrbitTranslation = new Vector3();
+
+            if (parentPosition != null)
+                parentOrbitTranslation = new Vector3(parentPosition.OrbitTranslation.Value);
+
+            return new Vector3(parentOrbitTranslation.Value + (OrbitTranslation.Value * (float)Math.Cos(cosAngle)));
         }
     }
 }

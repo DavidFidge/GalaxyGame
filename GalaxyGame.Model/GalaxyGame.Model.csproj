@@ -45,9 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\GalaxySectorLinkTypeExtensions.cs" />
+    <Compile Include="Interfaces\IHasSpaceObjects.cs" />
     <Compile Include="Interfaces\IHasPosition.cs" />
     <Compile Include="Space\Exploration.cs" />
     <Compile Include="Space\Entity.cs" />
+    <Compile Include="Space\SystemSetting.cs" />
     <Compile Include="Space\User.cs" />
     <Compile Include="Space\Player.cs" />
     <Compile Include="Space\SystemSector.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Space\SolarSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\Vector2.cs" />
+    <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Vector3.cs" />
   </ItemGroup>
   <ItemGroup>

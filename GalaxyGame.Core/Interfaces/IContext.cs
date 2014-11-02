@@ -7,6 +7,8 @@ namespace GalaxyGame.Core.Interfaces
 {
     public interface IContext : IDisposable
     {
+        void BeginTransaction();
+        void Commit();
         IDbSet<T> DbSet<T>() where T : class, IEntity;
         void Save();
     }

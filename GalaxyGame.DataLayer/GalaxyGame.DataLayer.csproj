@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\UnitOfWorkFactory.cs" />
     <Compile Include="EntityFramework\BaseContext.cs" />
     <Compile Include="Components\UnitOfWork.cs" />
     <Compile Include="Installers\DataLayerInstaller.cs" />

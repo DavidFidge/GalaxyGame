@@ -10,6 +10,7 @@ namespace GalaxyGame.Model.Space
         {
             SolarSystems = new HashSet<SolarSystem>();
             SectorLinks = new HashSet<GalaxySectorLink>();
+            Exploration = new Exploration();
         }
     
         public virtual string Name { get; set; }
