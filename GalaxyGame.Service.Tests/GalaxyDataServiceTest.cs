@@ -16,8 +16,10 @@ namespace GalaxyGame.Service.Tests
         protected GalaxyDataService _galaxyDataService;
 
         [SetUp]
-        public void Setup()
+        public override void Setup()
         {
+            base.Setup();
+
             _galaxyDataService = new GalaxyDataService(_unitOfWorkFactory);
         }
 

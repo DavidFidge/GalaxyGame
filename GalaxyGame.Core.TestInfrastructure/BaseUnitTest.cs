@@ -13,7 +13,7 @@ namespace GalaxyGame.Core.TestInfrastructure
         protected IContext _context;
 
         [SetUp]
-        protected void Setup()
+        public virtual void Setup()
         {
             _unitOfWorkFactory = Substitute.For<IUnitOfWorkFactory>();
             _context = new FakeContext();
