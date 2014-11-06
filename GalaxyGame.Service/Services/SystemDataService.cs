@@ -52,7 +52,6 @@ namespace GalaxyGame.Service.Services
             var solarSystem = new SolarSystem();
 
             solarSystem.GalaxySector = galaxySector;
-            solarSystem.GalaxySectorId = galaxySector.Id;
             solarSystem.Name = _dictionaryDataService.GetRandomLatinName(1);
 
             solarSystem.SystemLocation.X = (float)_randomization.Rand();
@@ -126,7 +125,6 @@ namespace GalaxyGame.Service.Services
                 };
             }
 
-            planet.SolarSystemId = solarSystem.Id;
             planet.SolarSystem = solarSystem;
             spaceObjectsSource.SpaceObjects.Add(planet);
 

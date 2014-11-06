@@ -30,6 +30,8 @@ namespace GalaxyGame.Service.Services
                     };
 
                     var galaxySector = AddGalaxySector(galaxy);
+
+                    uow.Context.DbSet<Galaxy>().Add(galaxy);
                 }
             }
         }
@@ -40,7 +42,6 @@ namespace GalaxyGame.Service.Services
             {
                 Name = "A1",
                 Galaxy = galaxy,
-                GalaxyId = galaxy.Id
             };
 
             LinkNewGalaxyToAnyGalaxySector(galaxySector);
@@ -65,9 +66,7 @@ namespace GalaxyGame.Service.Services
             var sectorLink = new GalaxySectorLink
             {
                 LinkType = linkType,
-                SectorFromId = from.Id,
                 SectorFrom = from,
-                SectorToId = to.Id,
                 SectorTo = to
             };
 
@@ -76,9 +75,7 @@ namespace GalaxyGame.Service.Services
             var newSectorLink = new GalaxySectorLink
             {
                 LinkType = linkType.OppositeDirection(),
-                SectorToId = from.Id,
                 SectorTo = from,
-                SectorFromId = to.Id,
                 SectorFrom = to
             };
 
