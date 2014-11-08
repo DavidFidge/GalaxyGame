@@ -10,8 +10,6 @@ namespace GalaxyGame.Model.Space
         }
 
         public virtual string EmailAddress  { get; set; }
-
-        public Guid PlayerId { get; set; }
         public virtual Player Player { get; set; }
     }
 }

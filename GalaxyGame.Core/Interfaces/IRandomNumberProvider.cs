@@ -6,7 +6,10 @@ namespace GalaxyGame.Core.Interfaces
 {
     public interface IRandomNumberProvider
     {
-        // Returns a number between min (inclusive) and max (exclusive)
+        // Returns a number between 0 and max, both inclusive
+        int Rand(int max);
+
+        // Returns a number between min and max, both inclusive
         int Rand(int min, int max);
 
         long Rand(long min, long max);

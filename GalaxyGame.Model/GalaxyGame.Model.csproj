@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\GalaxySectorLinkTypeExtensions.cs" />
-    <Compile Include="Interfaces\IHasSpaceObjects.cs" />
     <Compile Include="Interfaces\IHasPosition.cs" />
     <Compile Include="Space\Exploration.cs" />
     <Compile Include="Space\Entity.cs" />

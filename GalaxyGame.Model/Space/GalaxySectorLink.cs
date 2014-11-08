@@ -9,12 +9,8 @@ namespace GalaxyGame.Model.Space
         {
         }
 
-        public Guid SectorFromId { get; set; }
         public virtual GalaxySector SectorFrom { get; set; }
-
-        public Guid SectorToId { get; set; }
         public virtual GalaxySector SectorTo { get; set; }
-
         public virtual GalaxySectorLinkType LinkType { get; set; }
     }
 }

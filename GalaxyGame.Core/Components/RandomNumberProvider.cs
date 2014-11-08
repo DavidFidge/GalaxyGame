@@ -14,6 +14,11 @@ namespace GalaxyGame.Core.Components
             _random = new Random();
         }
 
+        public int Rand(int max)
+        {
+            return Rand(0, max);
+        }
+
         public int Rand(int min, int max)
         {
             return _random.Next(min, max + 1);
@@ -28,7 +33,7 @@ namespace GalaxyGame.Core.Components
         {
             var bytes = new byte[sizeof(long)];
             _random.NextBytes(bytes);
-            return BitConverter.ToInt64(bytes, 0);
+            return (BitConverter.ToInt64(bytes, 0) % (max - min)) + min;
         }
     }
 }

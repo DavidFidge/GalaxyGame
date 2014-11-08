@@ -52,10 +52,10 @@ namespace GalaxyGame.Model.Unity
 
         public static bool operator ==(Color v1, Color v2)
         {
-            if (v1 == null && v2 == null)
+            if (ReferenceEquals(v1, null) && ReferenceEquals(v2, null))
                 return true;
 
-            if (v1 == null || v2 == null)
+            if (ReferenceEquals(v1, null) || ReferenceEquals(v2, null))
                 return false;
 
             return v1.Value == v2.Value;
@@ -84,6 +84,14 @@ namespace GalaxyGame.Model.Unity
         public Color()
         {
             Value = UnityEngine.Color.black;
+        }
+
+        public Color(float a, float r, float g, float b)
+        {
+            A = a;
+            R = r;
+            G = g;
+            B = b;
         }
 
         public Color(UnityEngine.Color color)

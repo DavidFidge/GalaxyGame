@@ -48,10 +48,10 @@ namespace GalaxyGame.Model.Unity
 
         public static bool operator ==(Vector2 v1, Vector2 v2)
         {
-            if (v1 == null && v2 == null)
+            if (ReferenceEquals(v1, null) && ReferenceEquals(v2, null))
                 return true;
 
-            if (v1 == null || v2 == null)
+            if (ReferenceEquals(v1, null) || ReferenceEquals(v2, null))
                 return false;
 
             return v1.Value == v2.Value;
@@ -80,6 +80,18 @@ namespace GalaxyGame.Model.Unity
         public Vector2()
         {
             Value = UnityEngine.Vector2.zero;
+        }
+
+        public Vector2(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public Vector2(float value)
+        {
+            X = value;
+            Y = value;
         }
 
         public Vector2(UnityEngine.Vector2 Vector2)

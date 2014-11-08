@@ -11,10 +11,14 @@ namespace GalaxyGame.Core.TestInfrastructure
     {
         protected IUnitOfWorkFactory _unitOfWorkFactory;
         protected IContext _context;
+        protected IDateTimeProvider _dateTimeProvider;
 
         [SetUp]
         public virtual void Setup()
         {
+            _dateTimeProvider = Substitute.For<IDateTimeProvider>();
+            _dateTimeProvider.Now.Returns(new DateTime(2000, 1, 1));
+
             _unitOfWorkFactory = Substitute.For<IUnitOfWorkFactory>();
             _context = new FakeContext();
 

@@ -9,9 +9,7 @@ namespace GalaxyGame.Model.Space
         {
         }
 
-        public Guid ExploredById { get; set; }
         public virtual Player ExploredBy { get; set; }
-
         public virtual DateTime ExploredDateTime { get; set; }
     }
 }

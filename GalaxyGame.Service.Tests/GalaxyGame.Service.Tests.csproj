@@ -76,6 +76,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="SystemDataServiceTest.cs" />
     <Compile Include="GalaxyDataServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

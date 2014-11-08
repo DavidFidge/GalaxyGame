@@ -6,13 +6,18 @@ using GalaxyGame.Core.Interfaces;
 
 namespace GalaxyGame.Core.Components
 {
-    public class Randomization : IRandomization, IRandomNumberProvider
+    public class Randomization : IRandomization
     {
         private readonly IRandomNumberProvider _randomNumberProvider;
 
         public Randomization(IRandomNumberProvider randomNumberProvider)
         {
             _randomNumberProvider = randomNumberProvider;
+        }
+
+        public int Rand(int max)
+        {
+            return Rand(0, max);
         }
 
         public int Rand(int min, int max)

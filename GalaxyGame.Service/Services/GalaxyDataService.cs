@@ -13,9 +13,20 @@ namespace GalaxyGame.Service.Services
 {
     public class GalaxyDataService : BaseService, IGalaxyDataService
     {
-        public GalaxyDataService(IUnitOfWorkFactory unitOfWorkFactory)
+        private readonly IDictionaryDataService _dictionaryDataService;
+        private readonly ISystemDataService _systemDataService;
+        private readonly IRandomization _randomization;
+
+        public GalaxyDataService(
+            IUnitOfWorkFactory unitOfWorkFactory, 
+            IDictionaryDataService dictionaryDataService,
+            ISystemDataService systemDataService,
+            IRandomization randomization)
             : base(unitOfWorkFactory)
         {
+            _dictionaryDataService = dictionaryDataService;
+            _systemDataService = systemDataService;
+            _randomization = randomization;
         }
 
         public void CreateGalaxy()
@@ -26,7 +37,7 @@ namespace GalaxyGame.Service.Services
                 {
                     var galaxy = new Galaxy
                     {
-                        Name = "Test Galaxy"
+                        Name = _dictionaryDataService.GetRandomLatinName(_randomization.Rand(1,2))
                     };
 
                     var galaxySector = AddGalaxySector(galaxy);
@@ -40,9 +51,11 @@ namespace GalaxyGame.Service.Services
         {
             var galaxySector = new GalaxySector
             {
-                Name = "A1",
+                Name = _dictionaryDataService.GetRandomLatinName(_randomization.Rand(1, 2)),
                 Galaxy = galaxy,
             };
+
+            _systemDataService.CreateSystemsForGalaxySector(galaxySector);
 
             LinkNewGalaxyToAnyGalaxySector(galaxySector);
 
@@ -80,10 +93,6 @@ namespace GalaxyGame.Service.Services
             };
 
             to.SectorLinks.Add(newSectorLink);
-        }
-
-        public void AddGalaxySector(GalaxySector galaxySector)
-        {
         }
 
         public GalaxySectorLinkType GetLinkTypeForNewGalaxySectorLink(GalaxySector galaxySector)

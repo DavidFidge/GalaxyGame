@@ -8,17 +8,26 @@ namespace GalaxyGame.Model.Space
 {
     public class SystemPosition : Entity
     {
+        public SystemPosition()
+        {
+            Rotation = new Vector3();
+            Speed = 0f;
+            Scale = new Vector3(1.0f);
+            AxisRotation = new Vector3();
+            OrbitOriginTime = DateTime.Now;
+        }
+
         // Destination translation of object
         public virtual Vector3 Destination { get; set; }
 
-        // The position of the object.  This is a calculated field if object has an OrbitTranslation.
+        // The position of the object.
         public virtual Vector3 Translation { get; set; }
 
         // The position of the object relative to other objects it may be connected to
         public virtual Vector3 OrbitTranslation { get; set; }
 
         // Speed in radians per second
-        public double Speed { get; set; }
+        public virtual float Speed { get; set; }
 
         // Rotation vector of the object
         public virtual Vector3 Rotation { get; set; }
@@ -32,21 +41,21 @@ namespace GalaxyGame.Model.Space
         // Start of time for object orbit
         public virtual DateTime OrbitOriginTime { get; set; }
 
-        public Vector3 CurrentOrbitPosition(SystemPosition parentPosition, IDateTimeProvider dateTimeProvider)
+        public Vector3 CurrentOrbitPosition(SubSystem subSystem, IDateTimeProvider dateTimeProvider)
         {
-            if (OrbitTranslation.Value == UnityEngine.Vector3.zero)
+            if (subSystem == null || OrbitTranslation == null)
             {
+                if (Translation == null)
+                    return new Vector3();
+
                 return new Vector3(Translation);
             }
 
-            var cosAngle = ((dateTimeProvider.Now - OrbitOriginTime).TotalSeconds * Speed)/(2 * Math.PI);
+            var origin = subSystem.SystemPosition.CurrentOrbitPosition(subSystem.ParentSubSystem, dateTimeProvider);
 
-            var parentOrbitTranslation = new Vector3();
+            var cosAngle = ((dateTimeProvider.Now - OrbitOriginTime).TotalSeconds * Speed) / (2 * Math.PI);
 
-            if (parentPosition != null)
-                parentOrbitTranslation = new Vector3(parentPosition.OrbitTranslation.Value);
-
-            return new Vector3(parentOrbitTranslation.Value + (OrbitTranslation.Value * (float)Math.Cos(cosAngle)));
+            return new Vector3(origin.Value + (OrbitTranslation.Value * (float)Math.Cos(cosAngle)));
         }
     }
 }

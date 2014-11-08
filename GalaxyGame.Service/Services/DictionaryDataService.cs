@@ -28,7 +28,12 @@ namespace GalaxyGame.Service.Services
 
         public string GetRandomLatinName(int nameSize)
         {
-            return _latinDictionary[_randomization.Rand(0, _latinDictionary.Count)];
+            var name = string.Empty;
+
+            for (int i = 0; i < nameSize; i++)
+                name += _latinDictionary[_randomization.Rand(0, _latinDictionary.Count - 1)];
+
+            return name;
         }
     }
 }

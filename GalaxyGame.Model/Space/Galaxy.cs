@@ -11,7 +11,6 @@ namespace GalaxyGame.Model.Space
         }
     
         public virtual string Name { get; set; }
-
         public virtual ICollection<GalaxySector> GalaxySectors { get; set; }
     }
 }

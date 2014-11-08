@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GalaxyGame.Model.Interfaces;
+using GalaxyGame.Model.Unity;
 
 namespace GalaxyGame.Model.Space
 {
@@ -8,12 +9,11 @@ namespace GalaxyGame.Model.Space
     {
         public Player()
         {
+            SystemPosition.Translation = new Vector3();
         }
     
         public virtual string Name { get; set; }
-
-        public SolarSystem CurrentSystem { get; set; }
-
-        public SystemPosition SystemPosition { get; set; }
+        public virtual SolarSystem CurrentSystem { get; set; }
+        public virtual SystemPosition SystemPosition { get; set; }
     }
 }
