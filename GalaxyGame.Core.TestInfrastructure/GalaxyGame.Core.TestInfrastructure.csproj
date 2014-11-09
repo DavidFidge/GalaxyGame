@@ -69,11 +69,13 @@
   <ItemGroup>
     <Compile Include="Base\BaseIntegrationTest.cs" />
     <Compile Include="Base\BaseUnitTest.cs" />
+    <Compile Include="Components\TestContext.cs" />
     <Compile Include="Components\TestDatabaseConfiguration.cs" />
     <Compile Include="Extensions\ContextExtensions.cs" />
     <Compile Include="Fakes\FakeContext.cs" />
     <Compile Include="Fakes\FakeDbSet.cs" />
     <Compile Include="Installers\IntegrationTestInstaller.cs" />
+    <Compile Include="Interfaces\ITestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

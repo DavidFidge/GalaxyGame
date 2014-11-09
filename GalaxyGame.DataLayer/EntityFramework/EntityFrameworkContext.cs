@@ -9,10 +9,10 @@ namespace GalaxyGame.DataLayer.EntityFramework
 {
     public class EntityFrameworkContext : IContext
     {
-        private BaseContext _context;
+        protected BaseContext _context;
 
-        private DbContextTransaction _dbContextTransaction;
-        private bool _hasCommitted;
+        protected DbContextTransaction _dbContextTransaction;
+        protected bool _hasCommitted;
 
         public EntityFrameworkContext(IDatabaseConfiguration databaseConfiguration)
         {
@@ -31,11 +31,14 @@ namespace GalaxyGame.DataLayer.EntityFramework
 
         public void Dispose()
         {
-            if (!_hasCommitted)
-                _dbContextTransaction.Rollback();
+            if (_dbContextTransaction != null)
+            {
+                if (!_hasCommitted)
+                    _dbContextTransaction.Rollback();
 
-            _dbContextTransaction.Dispose();
-            _dbContextTransaction = null;
+                _dbContextTransaction.Dispose();
+                _dbContextTransaction = null;
+            }
 
             _context.Dispose();
             _context = null;

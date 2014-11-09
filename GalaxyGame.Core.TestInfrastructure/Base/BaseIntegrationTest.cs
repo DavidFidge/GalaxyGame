@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using Castle.Facilities.Logging;
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using GalaxyGame.Core.Interfaces;
 using GalaxyGame.Core.TestInfrastructure.Installers;
+using GalaxyGame.Core.TestInfrastructure.Interfaces;
 using GalaxyGame.DataLayer.Components;
 using GalaxyGame.DataLayer.Installers;
 using GalaxyGame.DataLayer.Interfaces;
@@ -48,6 +50,10 @@ namespace GalaxyGame.Core.TestInfrastructure.Base
         [TearDown]
         public virtual void Teardown()
         {
+            var testContext = _container.Resolve<ITestContext>();
+            testContext.DeleteDatabase();
+            _container.Release(testContext);
+
             Dispose();
         }
 

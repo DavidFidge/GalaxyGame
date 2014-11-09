@@ -5,6 +5,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using GalaxyGame.Core.TestInfrastructure.Components;
+using GalaxyGame.Core.TestInfrastructure.Interfaces;
 using GalaxyGame.DataLayer.Interfaces;
 
 namespace GalaxyGame.Core.TestInfrastructure.Installers
@@ -20,6 +21,12 @@ namespace GalaxyGame.Core.TestInfrastructure.Installers
                     .Named("TestDatabaseConfiguration")
                     .IsDefault()
                     .LifeStyle.Singleton
+                );
+
+            container.Register(
+                Component.For<ITestContext>()
+                    .ImplementedBy<TestContext>()
+                    .LifeStyle.Transient
                 );
         }
     }
