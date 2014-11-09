@@ -1,0 +1,1 @@
+xcopy /y .\GalaxyGame.Unity\bin\Debug\GalaxyGame.Unity.dll .\GalaxyGame.UnityScene\Assets\libs\*.*
