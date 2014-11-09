@@ -12,7 +12,6 @@ namespace GalaxyGame.Model.Space
 
         public Planet()
         {
-            SystemPosition.OrbitTranslation = new Vector3();
             Colour1 = new Color();
             Colour2 = new Color();
             PolarColour = new Color();

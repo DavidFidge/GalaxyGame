@@ -32,15 +32,16 @@ namespace GalaxyGame.Service.Services
 
         public void CreateSystemsForGalaxySector(GalaxySector galaxySector)
         {
-            using (var uow = _unitOfWorkFactory.Create())
-            {
-                var numberOfSolarSystems = _randomization.Rand(_systemSettings.MinSolarSystemsInGalaxySector, _systemSettings.MaxSolarSystemsInGalaxySector);
+            var uow = _unitOfWorkFactory.Create();
 
-                for (int i = 0; i < numberOfSolarSystems; i++)
-                {
-                    CreateSolarSystem(galaxySector);
-                }
+            var numberOfSolarSystems = _randomization.Rand(_systemSettings.MinSolarSystemsInGalaxySector, _systemSettings.MaxSolarSystemsInGalaxySector);
+
+            for (int i = 0; i < numberOfSolarSystems; i++)
+            {
+                CreateSolarSystem(galaxySector);
             }
+
+            _unitOfWorkFactory.Release();
         }
 
         private void CreateSolarSystem(GalaxySector galaxySector)

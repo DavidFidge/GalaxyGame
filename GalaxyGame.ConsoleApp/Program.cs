@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using GalaxyGame.DataLayer;
 using GalaxyGame.DataLayer.Components;
 using GalaxyGame.DataLayer.EntityFramework;
 using GalaxyGame.Model.Space;
@@ -11,16 +11,17 @@ namespace GalaxyGame.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            using (var uow = new UnitOfWork(new EntityFrameworkContext()))
-            {
-                var galaxies = uow.Context.DbSet<Galaxy>().ToList();
+            var databaseConfiguration = new DatabaseConfiguration();
 
-                Console.WriteLine("Database created, reading galaxy");
+            var uow = new UnitOfWork(new EntityFrameworkContext(databaseConfiguration));
 
-                galaxies.ForEach(g => Console.WriteLine(g.Name));
+            var galaxies = uow.Context.DbSet<Galaxy>().ToList();
 
-                Console.ReadKey();
-            }
+            Console.WriteLine("Database created, reading galaxy");
+
+            galaxies.ForEach(g => Console.WriteLine(g.Name));
+
+            Console.ReadKey();
         }
     }
 }

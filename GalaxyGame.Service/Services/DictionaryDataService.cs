@@ -23,7 +23,7 @@ namespace GalaxyGame.Service.Services
             : base(unitOfWorkFactory)
         {
             _randomization = randomization;
-            _latinDictionary = File.ReadAllLines("latin.txt").ToList();
+            _latinDictionary = File.ReadAllLines(@"data\latin.txt").ToList();
         }
 
         public string GetRandomLatinName(int nameSize)
@@ -31,7 +31,11 @@ namespace GalaxyGame.Service.Services
             var name = string.Empty;
 
             for (int i = 0; i < nameSize; i++)
+            {
+                if (i > 0)
+                    name += " ";
                 name += _latinDictionary[_randomization.Rand(0, _latinDictionary.Count - 1)];
+            }
 
             return name;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Castle.Core.Internal;
 using GalaxyGame.Core.Interfaces;
+using GalaxyGame.Core.TestInfrastructure.Fakes;
 using NSubstitute;
 
 namespace GalaxyGame.Core.TestInfrastructure

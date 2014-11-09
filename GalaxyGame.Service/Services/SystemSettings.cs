@@ -19,15 +19,18 @@ namespace GalaxyGame.Service.Services
 
         private T GetSystemSetting<T>(string propertyName, T defaultValue)
         {
-            using (var uow = _unitOfWorkFactory.Create())
-            {
-                var setting = uow.Context.DbSet<SystemSetting>().FirstOrDefault(ss => ss.Name == propertyName);
+            var uow = _unitOfWorkFactory.Create();
 
-                if (setting == null)
-                    return defaultValue;
+            var settingValue = defaultValue;
 
-                return (T) TypeDescriptor.GetConverter(typeof (T)).ConvertFromString(setting.Value);
-            }
+            var setting = uow.Context.DbSet<SystemSetting>().FirstOrDefault(ss => ss.Name == propertyName);
+
+            if (setting != null)
+                settingValue = (T) TypeDescriptor.GetConverter(typeof(T)).ConvertFromString(setting.Value);
+
+            _unitOfWorkFactory.Release();
+
+            return settingValue;
         }
 
         public int MinSolarSystemsInGalaxySector

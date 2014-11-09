@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using Castle.Core.Internal;
 using GalaxyGame.Core.Interfaces;
 
-namespace GalaxyGame.Core.TestInfrastructure
+namespace GalaxyGame.Core.TestInfrastructure.Fakes
 {
     public class FakeDbSet<T> : IDbSet<T> where T : class, IEntity
     {

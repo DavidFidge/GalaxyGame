@@ -14,7 +14,6 @@ namespace GalaxyGame.Model.Space
         {
             SpaceObjects = new HashSet<SpaceObject>();
             SystemPosition = new SystemPosition();
-            SystemPosition.Translation = new Vector3();
         }
 
         public virtual SubSystem ParentSubSystem { get; set; }

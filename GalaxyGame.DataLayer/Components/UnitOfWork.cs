@@ -1,4 +1,7 @@
-﻿using GalaxyGame.Core.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using GalaxyGame.Core.Interfaces;
 
 namespace GalaxyGame.DataLayer.Components
 {
@@ -26,14 +29,9 @@ namespace GalaxyGame.DataLayer.Components
 
             if (CommittedNestLevel == 0)
             {
-                Context.Save();
-                Context.Commit();
+                _context.Save();
+                _context.Commit();
             }
-        }
-
-        public void Dispose()
-        {
-            _context.Dispose();
         }
     }
 }

@@ -10,11 +10,14 @@ namespace GalaxyGame.Model.Space
     {
         public SystemPosition()
         {
+            Destination = new Vector3();
+            Translation = new Vector3();
+            OrbitTranslation = new Vector3();
             Rotation = new Vector3();
-            Speed = 0f;
             Scale = new Vector3(1.0f);
             AxisRotation = new Vector3();
             OrbitOriginTime = DateTime.Now;
+            IsOrbiting = true;
         }
 
         // Destination translation of object
@@ -25,6 +28,8 @@ namespace GalaxyGame.Model.Space
 
         // The position of the object relative to other objects it may be connected to
         public virtual Vector3 OrbitTranslation { get; set; }
+
+        public virtual bool IsOrbiting { get; set; }
 
         // Speed in radians per second
         public virtual float Speed { get; set; }
@@ -43,11 +48,8 @@ namespace GalaxyGame.Model.Space
 
         public Vector3 CurrentOrbitPosition(SubSystem subSystem, IDateTimeProvider dateTimeProvider)
         {
-            if (subSystem == null || OrbitTranslation == null)
+            if (subSystem == null || !IsOrbiting)
             {
-                if (Translation == null)
-                    return new Vector3();
-
                 return new Vector3(Translation);
             }
 

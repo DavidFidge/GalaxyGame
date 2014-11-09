@@ -7,8 +7,8 @@ namespace GalaxyGame.DataLayer.EntityFramework
 {
     public class BaseContext : DbContext
     {
-        public BaseContext()
-            : base("name=GalaxyGame")
+        public BaseContext(string databaseName)
+            : base(databaseName)
         {
         }
 

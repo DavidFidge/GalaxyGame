@@ -1,4 +1,7 @@
-﻿using GalaxyGame.Core.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using GalaxyGame.Core.Interfaces;
 
 namespace GalaxyGame.DataLayer.Components
 {
@@ -23,11 +26,26 @@ namespace GalaxyGame.DataLayer.Components
             return _unitOfWork;
         }
 
-        public void Dispose()
+        public void Release()
         {
             _unitOfWork.Commit();
 
-            _innerFactory.Release(_unitOfWork);
+            if (_unitOfWork.CommittedNestLevel == 0)
+            {
+                // This will call dispose
+                _innerFactory.Release(_unitOfWork);
+                _unitOfWork = null;
+            }
+        }
+
+        public void Dispose()
+        {
+            if (_unitOfWork != null)
+            {
+                // This will call dispose
+                _innerFactory.Release(_unitOfWork);
+                _unitOfWork = null;
+            }
         }
     }
 }

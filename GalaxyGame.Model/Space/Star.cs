@@ -6,7 +6,6 @@ namespace GalaxyGame.Model.Space
     {
         public Star()
         {
-            SystemPosition.OrbitTranslation = new Vector3();
         }
     }
 }

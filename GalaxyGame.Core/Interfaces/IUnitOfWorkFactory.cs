@@ -7,5 +7,6 @@ namespace GalaxyGame.Core.Interfaces
     public interface IUnitOfWorkFactory : IDisposable
     {
         IUnitOfWork Create();
+        void Release();
     }
 }

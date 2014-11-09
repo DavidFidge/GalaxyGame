@@ -18,7 +18,7 @@ namespace GalaxyGame.Service.Services
         private readonly IRandomization _randomization;
 
         public GalaxyDataService(
-            IUnitOfWorkFactory unitOfWorkFactory, 
+            IUnitOfWorkFactory unitOfWorkFactory,
             IDictionaryDataService dictionaryDataService,
             ISystemDataService systemDataService,
             IRandomization randomization)
@@ -31,23 +31,24 @@ namespace GalaxyGame.Service.Services
 
         public void CreateGalaxy()
         {
-            using (var uow = _unitOfWorkFactory.Create())
+            var uow = _unitOfWorkFactory.Create();
+
+            if (!uow.Context.DbSet<Galaxy>().Any())
             {
-                if (!uow.Context.DbSet<Galaxy>().Any())
+                var galaxy = new Galaxy
                 {
-                    var galaxy = new Galaxy
-                    {
-                        Name = _dictionaryDataService.GetRandomLatinName(_randomization.Rand(1,2))
-                    };
+                    Name = _dictionaryDataService.GetRandomLatinName(_randomization.Rand(1, 2))
+                };
 
-                    var galaxySector = AddGalaxySector(galaxy);
+                AddGalaxySector(galaxy);
 
-                    uow.Context.DbSet<Galaxy>().Add(galaxy);
-                }
+                uow.Context.DbSet<Galaxy>().Add(galaxy);
             }
+
+            _unitOfWorkFactory.Release();
         }
 
-        public GalaxySector AddGalaxySector(Galaxy galaxy)
+        public void AddGalaxySector(Galaxy galaxy)
         {
             var galaxySector = new GalaxySector
             {
@@ -60,8 +61,6 @@ namespace GalaxyGame.Service.Services
             LinkNewGalaxyToAnyGalaxySector(galaxySector);
 
             galaxy.GalaxySectors.Add(galaxySector);
-
-            return galaxySector;
         }
 
         private void LinkNewGalaxyToAnyGalaxySector(GalaxySector newGalaxySector)
@@ -97,7 +96,7 @@ namespace GalaxyGame.Service.Services
 
         public GalaxySectorLinkType GetLinkTypeForNewGalaxySectorLink(GalaxySector galaxySector)
         {
-            var sectorLinkTypes = Enum.GetValues(typeof (GalaxySectorLinkType)).OfType<GalaxySectorLinkType>().ToList();
+            var sectorLinkTypes = Enum.GetValues(typeof(GalaxySectorLinkType)).OfType<GalaxySectorLinkType>().ToList();
 
             galaxySector.SectorLinks.ForEach(gs => sectorLinkTypes.Remove(gs.LinkType));
 

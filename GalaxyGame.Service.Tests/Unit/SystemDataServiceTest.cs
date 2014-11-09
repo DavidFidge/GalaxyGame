@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using GalaxyGame.Core.Interfaces;
-using GalaxyGame.Core.TestInfrastructure;
+using GalaxyGame.Core.TestInfrastructure.Base;
 using GalaxyGame.Model.Space;
 using GalaxyGame.Service.Interfaces;
 using GalaxyGame.Service.Services;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace GalaxyGame.Service.Tests
+namespace GalaxyGame.Service.Tests.Unit
 {
     [TestFixture]
     public class SystemDataServiceTest : BaseUnitTest

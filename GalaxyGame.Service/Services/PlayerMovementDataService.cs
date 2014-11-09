@@ -18,12 +18,13 @@ namespace GalaxyGame.Service.Services
 
         public bool MoveTo(Guid playerId, Vector3 destination)
         {
-            using (var uow = _unitOfWorkFactory.Create())
-            {
-                var player = uow.Context.DbSet<Player>().First(p => p.Id == playerId);
+            var uow = _unitOfWorkFactory.Create();
 
-                player.SystemPosition.Destination = destination;
-            }
+            var player = uow.Context.DbSet<Player>().First(p => p.Id == playerId);
+
+            player.SystemPosition.Destination = destination;
+
+            _unitOfWorkFactory.Release();
 
             return true;
         }

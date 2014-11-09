@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using GalaxyGame.Core.Interfaces;
+using GalaxyGame.DataLayer.Interfaces;
 
 namespace GalaxyGame.DataLayer.EntityFramework
 {
@@ -9,50 +12,44 @@ namespace GalaxyGame.DataLayer.EntityFramework
         private BaseContext _context;
 
         private DbContextTransaction _dbContextTransaction;
-        private bool _hasCommitted = false;
+        private bool _hasCommitted;
+
+        public EntityFrameworkContext(IDatabaseConfiguration databaseConfiguration)
+        {
+            _context = new BaseContext(databaseConfiguration.DatabaseName);
+        }
 
         public IDbSet<T> DbSet<T>() where T : class, IEntity
         {
-            var context = _context ?? new BaseContext();
-            _context = context;
-
-            return context.Set<T>();
+            return _context.Set<T>();
         }
 
         public void Save()
         {
-            if (_context != null)
-                _context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Dispose()
         {
-            if (_dbContextTransaction != null)
-            {
-                if (!_hasCommitted)
-                    _dbContextTransaction.Rollback();
+            if (!_hasCommitted)
+                _dbContextTransaction.Rollback();
 
-                _dbContextTransaction.Dispose();
-            }
-            if (_context != null)
-            {
-                _context.Dispose();
-            }
+            _dbContextTransaction.Dispose();
+            _dbContextTransaction = null;
+
+            _context.Dispose();
+            _context = null;
         }
 
         public void BeginTransaction()
         {
-            if (_context != null)
-                _dbContextTransaction = _context.Database.BeginTransaction();
+            _dbContextTransaction = _context.Database.BeginTransaction();
         }
 
         public void Commit()
         {
-            if (_context != null)
-            {
-                _dbContextTransaction.Commit();
-                _hasCommitted = true;
-            }
+            _dbContextTransaction.Commit();
+            _hasCommitted = true;
         }
     }
 }

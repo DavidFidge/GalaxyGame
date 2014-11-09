@@ -8,6 +8,8 @@ using Castle.Windsor;
 using GalaxyGame.Core.Interfaces;
 using GalaxyGame.Core.Service;
 using GalaxyGame.DataLayer.Components;
+using GalaxyGame.DataLayer.EntityFramework;
+using GalaxyGame.DataLayer.Interfaces;
 
 namespace GalaxyGame.DataLayer.Installers
 {
@@ -16,8 +18,16 @@ namespace GalaxyGame.DataLayer.Installers
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
+                Component.For<IContext>()
+                    .ImplementedBy<EntityFrameworkContext>()
+                    .LifeStyle.Transient,
+
                 Component.For<IUnitOfWork>()
                     .ImplementedBy<UnitOfWork>()
+                    .LifeStyle.Transient,
+
+                Component.For<IDatabaseConfiguration>()
+                    .ImplementedBy<DatabaseConfiguration>()
                     .LifeStyle.Transient,
 
                 Component.For<IUnitOfWorkFactory>()

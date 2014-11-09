@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using GalaxyGame.Core.Interfaces;
+using GalaxyGame.Core.TestInfrastructure.Fakes;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace GalaxyGame.Core.TestInfrastructure
+namespace GalaxyGame.Core.TestInfrastructure.Base
 {
     public class BaseUnitTest
     {

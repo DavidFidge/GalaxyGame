@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using GalaxyGame.Core.Interfaces;
 
-namespace GalaxyGame.Core.TestInfrastructure
+namespace GalaxyGame.Core.TestInfrastructure.Fakes
 {
     public class FakeContext : IContext
     {

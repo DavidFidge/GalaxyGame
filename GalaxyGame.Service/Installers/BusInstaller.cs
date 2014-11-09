@@ -5,7 +5,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using MassTransit;
-using MassTransit.Log4NetIntegration;
+using MassTransit.NLogIntegration;
 
 namespace GalaxyGame.Service.Installers
 {
@@ -18,7 +18,7 @@ namespace GalaxyGame.Service.Installers
                 //other configuration options
                 sbc.UseMsmq(mc => { mc.VerifyMsmqConfiguration(); });
 
-                sbc.UseLog4Net();
+                sbc.UseNLog();
 
                 sbc.ReceiveFrom("msmq://localhost/galaxygame");
 

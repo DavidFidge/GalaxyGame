@@ -9,7 +9,6 @@ namespace GalaxyGame.Model.Space
     {
         public Moon()
         {
-            SystemPosition.OrbitTranslation = new Vector3();
         }
     }
 }

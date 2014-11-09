@@ -9,7 +9,7 @@ namespace GalaxyGame.Model.Space
     {
         public Player()
         {
-            SystemPosition.Translation = new Vector3();
+            SystemPosition.IsOrbiting = false;
         }
     
         public virtual string Name { get; set; }
