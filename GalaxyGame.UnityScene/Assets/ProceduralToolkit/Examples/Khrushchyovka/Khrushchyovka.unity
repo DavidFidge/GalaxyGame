@@ -100,7 +100,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .699999988
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -131,7 +131,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 265645927}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381661, w: .875426114}
+  m_LocalRotation: {x: -.390448391, y: .346829027, z: -.161729053, w: -.837319195}
   m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -149,7 +149,7 @@ GameObject:
   - 33: {fileID: 462778071}
   - 114: {fileID: 462778069}
   m_Layer: 0
-  m_Name: ChairGenerator
+  m_Name: Khrushchyovka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,17 +163,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 462778068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de818bda25b9ab648b6ea767f2363fcd, type: 3}
+  m_Script: {fileID: 11500000, guid: eff1560572571b340b7ecf0b9ce08851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  legWidthLB: .0500000007
-  legWidthUB: .119999997
-  legHeightLB: .5
-  legHeightUB: 1.20000005
-  seatLB: {x: .699999988, y: .0500000007, z: .699999988}
-  seatUB: {x: 1, y: .200000003, z: .899999976}
-  backHeightLB: .5
-  backHeightUB: 1.29999995
+  widthLB: 10
+  widthUB: 13
+  lengthLB: 30
+  lengthUB: 55
+  floorCountLB: 1
+  floorCountUB: 7
 --- !u!4 &462778070
 Transform:
   m_ObjectHideFlags: 0
@@ -205,7 +203,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: b2ee2b9aa91c839499c86afce5eaabfa, type: 2}
+  - {fileID: 2100000, guid: 996522b382717a54c945df7c35053044, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -242,11 +240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 462778070}
-  distance: {x: 0, y: 1, z: -3.20000005}
+  distance: {x: 0, y: 5, z: -50}
   turnSpeed: 10
   turnSmoothing: .100000001
-  tiltMax: 60
-  tiltMin: 0
+  tiltMax: 75
+  tiltMin: -10
 --- !u!20 &1487791941
 Camera:
   m_ObjectHideFlags: 0

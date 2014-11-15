@@ -46,18 +46,18 @@ namespace GalaxyGame.Model.Space
         // Start of time for object orbit
         public virtual DateTime OrbitOriginTime { get; set; }
 
-        public Vector3 CurrentOrbitPosition(SubSystem subSystem, IDateTimeProvider dateTimeProvider)
-        {
-            if (subSystem == null || !IsOrbiting)
-            {
-                return new Vector3(Translation);
-            }
+        //public Vector3 CurrentOrbitPosition(SubSystem subSystem, IDateTimeProvider dateTimeProvider)
+        //{
+        //    if (subSystem == null || !IsOrbiting)
+        //    {
+        //        return new Vector3(Translation);
+        //    }
 
-            var origin = subSystem.SystemPosition.CurrentOrbitPosition(subSystem.ParentSubSystem, dateTimeProvider);
+        //    var origin = subSystem.SystemPosition.CurrentOrbitPosition(subSystem.ParentSubSystem, dateTimeProvider);
 
-            var cosAngle = ((dateTimeProvider.Now - OrbitOriginTime).TotalSeconds * Speed) / (2 * Math.PI);
+        //    var cosAngle = ((dateTimeProvider.Now - OrbitOriginTime).TotalSeconds * Speed) / (2 * Math.PI);
 
-            return new Vector3(origin.Value + (OrbitTranslation.Value * (float)Math.Cos(cosAngle)));
-        }
+        //    return new Vector3(origin.Value + (OrbitTranslation.Value * (float)Math.Cos(cosAngle)));
+        //}
     }
 }

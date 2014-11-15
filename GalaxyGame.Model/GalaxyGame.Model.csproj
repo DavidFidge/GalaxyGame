@@ -57,7 +57,6 @@
     <Compile Include="Space\GalaxySectorLink.cs" />
     <Compile Include="Space\GalaxySector.cs" />
     <Compile Include="Space\Galaxy.cs" />
-    <Compile Include="Space\Moon.cs" />
     <Compile Include="Space\Planet.cs" />
     <Compile Include="Space\SystemPosition.cs" />
     <Compile Include="Space\SpaceObject.cs" />

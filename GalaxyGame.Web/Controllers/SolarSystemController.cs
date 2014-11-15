@@ -14,8 +14,8 @@ namespace GalaxyGame.Web.Controllers
         {
             
         }
-        // GET: api/Move
-        public IEnumerable<string> Get()
+        // GET: api/SolarSystems
+        public IEnumerable<string> GetSpaceObjects()
         {
             return new string[] { "value1", "value2" };
         }

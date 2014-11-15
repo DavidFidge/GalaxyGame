@@ -26,7 +26,6 @@ namespace GalaxyGame.DataLayer.EntityFramework
                 .WithMany(gs => gs.SectorLinks)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Moon>();
             modelBuilder.Entity<Planet>();
             modelBuilder.Entity<Player>();
             modelBuilder.Entity<SolarSystem>();

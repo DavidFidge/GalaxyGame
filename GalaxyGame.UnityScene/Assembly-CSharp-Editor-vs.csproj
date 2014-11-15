@@ -87,14 +87,33 @@
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\HorizontalFillShader.shader" />
      <None Include="Assets\Energy Bar Toolkit\README.txt" />
      <None Include="Assets\Energy Bar Toolkit\Example\Fonts\Boogaloo\SIL OFL Font License Boogaloo.txt" />
+     <None Include="Assets\ProceduralToolkit\Shaders\Specular Vertex Color.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Mad2D">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/Mad2D.dll</HintPath>
+ </Reference>
+ <Reference Include="MadCommons">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/MadCommons.dll</HintPath>
+ </Reference>
+ <Reference Include="Mad2D_Editor">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/Editor/Mad2D_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="MadCommons_Editor">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/Editor/MadCommons_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="GalaxyGame.Contract">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/GalaxyGame.Contract.dll</HintPath>
+ </Reference>
  <Reference Include="GalaxyGame.Unity">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/GalaxyGame.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="UnitySignalR">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnitySignalR.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/websocket-sharp.dll</HintPath>
@@ -102,26 +121,8 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
- <Reference Include="MadCommons">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/MadCommons.dll</HintPath>
- </Reference>
- <Reference Include="Mad2D">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/Mad2D.dll</HintPath>
- </Reference>
- <Reference Include="MadCommons_Editor">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/Editor/MadCommons_Editor.dll</HintPath>
- </Reference>
- <Reference Include="Mad2D_Editor">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/Energy Bar Toolkit/Scripts/Editor/Mad2D_Editor.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="ProceduralToolkit-master">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/ProceduralToolkit-master.dll</HintPath>
- </Reference>
- <Reference Include="UnitySignalR">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnitySignalR.dll</HintPath>
+ <Reference Include="JsonFx">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net35\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="JsonFx">
+      <HintPath>..\packages\JsonFx.2.0.1209.2802\lib\net35\JsonFx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +60,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\GalaxyGame.Contract\GalaxyGame.Contract.csproj">
+      <Project>{eca86971-3e01-4917-ac2d-58294851a6c3}</Project>
+      <Name>GalaxyGame.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UnitySignalR\UnitySignalR.csproj">
       <Project>{9e21df26-6d7b-4c75-85be-e2e367b9f773}</Project>
       <Name>UnitySignalR</Name>

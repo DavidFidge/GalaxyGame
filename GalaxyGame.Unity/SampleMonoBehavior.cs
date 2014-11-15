@@ -11,6 +11,7 @@ namespace GalaxyGame.Unity
 
         public void Start()
         {
+            System.Runtime.CompilerServices.ExtensionAttribute x = null;
         }
 
         public void Update()
