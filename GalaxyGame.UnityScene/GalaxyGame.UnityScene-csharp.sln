@@ -1,19 +1,29 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{D9DF390B-7DC3-3E8D-2671-1B9E2ABC7DB8}") = "GalaxyGame.UnityScene", "Assembly-CSharp-vs.csproj", "{B6A0C6F8-D94B-BA39-ED65-B2C246F9CEB9}"
+EndProject
+Project("{D9DF390B-7DC3-3E8D-2671-1B9E2ABC7DB8}") = "GalaxyGame.UnityScene", "Assembly-CSharp-Editor-vs.csproj", "{CFE94759-7741-F260-F137-445DF27F8374}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{B6A0C6F8-D94B-BA39-ED65-B2C246F9CEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A0C6F8-D94B-BA39-ED65-B2C246F9CEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A0C6F8-D94B-BA39-ED65-B2C246F9CEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A0C6F8-D94B-BA39-ED65-B2C246F9CEB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE94759-7741-F260-F137-445DF27F8374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE94759-7741-F260-F137-445DF27F8374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE94759-7741-F260-F137-445DF27F8374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE94759-7741-F260-F137-445DF27F8374}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

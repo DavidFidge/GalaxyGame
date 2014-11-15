@@ -1,5 +1,6 @@
 ﻿using Castle.Facilities.Logging;
 using Castle.Facilities.TypedFactory;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
+using Castle.Windsor.Installer;
 
 namespace GalaxyGame.Web.Components
 {
@@ -20,6 +22,8 @@ namespace GalaxyGame.Web.Components
             _container = container;
             _container.AddFacility<TypedFactoryFacility>();
             _container.AddFacility<LoggingFacility>(f => f.UseLog4Net());
+
+            _container.Install(FromAssembly.InDirectory(new AssemblyFilter(AppDomain.CurrentDomain.RelativeSearchPath)));
         }
 
         public IHttpController Create(HttpRequestMessage request, HttpControllerDescriptor controllerDescriptor, Type controllerType)

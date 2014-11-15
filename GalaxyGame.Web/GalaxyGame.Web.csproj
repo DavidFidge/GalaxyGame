@@ -126,9 +126,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\libraries\Unity3D\UnityEngine.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -219,6 +216,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SolarSystemController.cs" />
     <Compile Include="Controllers\MoveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,6 +294,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GalaxyGame.Contract\GalaxyGame.Contract.csproj">
+      <Project>{eca86971-3e01-4917-ac2d-58294851a6c3}</Project>
+      <Name>GalaxyGame.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GalaxyGame.DataLayer\GalaxyGame.DataLayer.csproj">
+      <Project>{21620ae2-ca22-4bdc-abbe-00977f5b93a7}</Project>
+      <Name>GalaxyGame.DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GalaxyGame.Service\GalaxyGame.Service.csproj">
       <Project>{8fde8a2f-e6bf-408a-a7c5-40665e6b6235}</Project>
       <Name>GalaxyGame.Service</Name>
