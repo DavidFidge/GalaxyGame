@@ -53,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleMonoBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +62,14 @@
     <ProjectReference Include="..\GalaxyGame.Contract\GalaxyGame.Contract.csproj">
       <Project>{eca86971-3e01-4917-ac2d-58294851a6c3}</Project>
       <Name>GalaxyGame.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnityFortuneVoronoi\UnityFortuneVoronoi.csproj">
+      <Project>{42c89235-8657-470a-b668-8b4343ec2453}</Project>
+      <Name>UnityFortuneVoronoi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnityHelpers\UnityHelpers.csproj">
+      <Project>{992a0a87-3d76-4b1b-be65-be91afcc56ec}</Project>
+      <Name>UnityHelpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\UnitySignalR\UnitySignalR.csproj">
       <Project>{9e21df26-6d7b-4c75-85be-e2e367b9f773}</Project>

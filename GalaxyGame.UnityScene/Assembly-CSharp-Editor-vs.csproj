@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraController\Editor\PropertyEditor.cs" />
+     <Compile Include="Assets\CameraController\Editor\ThirdPersonCameraEditor.cs" />
+     <Compile Include="Assets\CameraController\Editor\ThirdPersonControllerEditor.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\3DRenderers\Editor\CreateMeshBarTool.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\3DRenderers\Editor\FilledRenderer3DBuilder.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\3DRenderers\Editor\RepeatRenderer3DBuilder.cs" />
@@ -66,6 +69,9 @@
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\Editor\SimpleEventInspector.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\Editor\TransformRenderer3DInspector.cs" />
      <Compile Include="Assets\ProceduralToolkit\Editor\ProceduralToolkitMenu.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Extensions\Editor\InspectorForPolygonator.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Voronoi\Editor\InspectorForVoronoiCell.cs" />
+     <None Include="Assets\GhostFreeRoamCamera\READEME.txt" />
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\Font.shader" />
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\UnlitTransparentTint.shader" />
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\UnlitTransparentTintPre.shader" />
@@ -112,6 +118,15 @@
  <Reference Include="GalaxyGame.Unity">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/GalaxyGame.Unity.dll</HintPath>
  </Reference>
+ <Reference Include="JsonFx">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/JsonFx.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityFortuneVoronoi">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnityFortuneVoronoi.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityHelpers">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnityHelpers.dll</HintPath>
+ </Reference>
  <Reference Include="UnitySignalR">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnitySignalR.dll</HintPath>
  </Reference>
@@ -121,13 +136,6 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
- <Reference Include="JsonFx">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/JsonFx.dll</HintPath>
- </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-vs.csproj">
-      <Project>{B6A0C6F8-D94B-BA39-ED65-B2C246F9CEB9}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

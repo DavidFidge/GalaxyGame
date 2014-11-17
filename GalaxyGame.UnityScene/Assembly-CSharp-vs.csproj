@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraController\ThirdPersonCamera.cs" />
+     <Compile Include="Assets\CameraController\ThirdPersonController.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Example\Scripts\AnimationPlayer.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Example\Scripts\BarOptionsGUI.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Example\Scripts\BarOptionsGUIMulti.cs" />
@@ -68,7 +70,12 @@
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\EnergyBarTransformRenderer.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\Screen2.cs" />
      <Compile Include="Assets\Energy Bar Toolkit\Scripts\SimpleEvent.cs" />
-     <Compile Include="Assets\GalaxyGame\Test.cs" />
+     <Compile Include="Assets\GalaxyGame\ColorExtensions.cs" />
+     <Compile Include="Assets\GalaxyGame\IGenerator.cs" />
+     <Compile Include="Assets\GalaxyGame\ProceduralSphere.cs" />
+     <Compile Include="Assets\GalaxyGame\ProceduralTexture.cs" />
+     <Compile Include="Assets\GalaxyGame\ProceduralVoronoiTexture.cs" />
+     <Compile Include="Assets\GhostFreeRoamCamera\Scripts\GhostFreeRoamCamera.cs" />
      <Compile Include="Assets\ProceduralToolkit\ColorE.cs" />
      <Compile Include="Assets\ProceduralToolkit\Datasets\Datasets.cs" />
      <Compile Include="Assets\ProceduralToolkit\Directions.cs" />
@@ -81,6 +88,32 @@
      <Compile Include="Assets\ProceduralToolkit\MeshE.cs" />
      <Compile Include="Assets\ProceduralToolkit\PTUtils.cs" />
      <Compile Include="Assets\ProceduralToolkit\RandomE.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Extensions\VoronoiPolygonator.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\DelaunayHelpers.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\Edge.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\EdgeList.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\EdgeReorderer.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\Halfedge.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\HalfedgePriorityQueue.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\ICoord.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\LR.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\Site.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\SiteList.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\Triangle.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\Vertex.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Delaunay\Voronoi.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Voronoi\VoronoiCell.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Voronoi\VoronoiCellEdge.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Voronoi\VoronoiCellVertex.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Voronoi\VoronoiDiagram.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\Voronoi\VoronoiEdgePath.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\geom\Circle.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\geom\LineSegment.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\geom\Polygon.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\geom\Winding.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\Unity-delaunay\utils\IDisposable.cs" />
+     <Compile Include="Assets\Unity-delaunay\demo\Assets\VoronoiDemo.cs" />
+     <None Include="Assets\GhostFreeRoamCamera\READEME.txt" />
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\Font.shader" />
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\UnlitTransparentTint.shader" />
      <None Include="Assets\Energy Bar Toolkit\Resources\Shaders\UnlitTransparentTintPre.shader" />
@@ -118,14 +151,20 @@
  <Reference Include="GalaxyGame.Unity">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/GalaxyGame.Unity.dll</HintPath>
  </Reference>
+ <Reference Include="JsonFx">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/JsonFx.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityFortuneVoronoi">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnityFortuneVoronoi.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityHelpers">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnityHelpers.dll</HintPath>
+ </Reference>
  <Reference Include="UnitySignalR">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnitySignalR.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/websocket-sharp.dll</HintPath>
- </Reference>
- <Reference Include="JsonFx">
- <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/JsonFx.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
