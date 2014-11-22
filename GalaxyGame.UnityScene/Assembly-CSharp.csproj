@@ -74,7 +74,9 @@
      <Compile Include="Assets\GalaxyGame\IGenerator.cs" />
      <Compile Include="Assets\GalaxyGame\ProceduralSphere.cs" />
      <Compile Include="Assets\GalaxyGame\ProceduralTexture.cs" />
+     <Compile Include="Assets\GalaxyGame\ProceduralTextureTest.cs" />
      <Compile Include="Assets\GalaxyGame\ProceduralVoronoiTexture.cs" />
+     <Compile Include="Assets\GalaxyGame\ProceduralVoronoiTexture2.cs" />
      <Compile Include="Assets\GhostFreeRoamCamera\Scripts\GhostFreeRoamCamera.cs" />
      <Compile Include="Assets\ProceduralToolkit\ColorE.cs" />
      <Compile Include="Assets\ProceduralToolkit\Datasets\Datasets.cs" />
@@ -83,6 +85,17 @@
      <Compile Include="Assets\ProceduralToolkit\Examples\CameraRotator.cs" />
      <Compile Include="Assets\ProceduralToolkit\Examples\ChairGenerator\ChairGenerator.cs" />
      <Compile Include="Assets\ProceduralToolkit\Examples\Khrushchyovka\Khrushchyovka.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Cylinder.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Dodecahedron.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\FlatSphere.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Hexahedron.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Icosahedron.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Octahedron.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Plane.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Prism.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Pyramid.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Sphere.cs" />
+     <Compile Include="Assets\ProceduralToolkit\Examples\Primitives\Tetrahedron.cs" />
      <Compile Include="Assets\ProceduralToolkit\Examples\TerrainMesh\TerrainMesh.cs" />
      <Compile Include="Assets\ProceduralToolkit\MeshDraft.cs" />
      <Compile Include="Assets\ProceduralToolkit\MeshE.cs" />

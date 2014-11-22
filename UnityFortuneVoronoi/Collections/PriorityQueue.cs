@@ -41,7 +41,7 @@ namespace UnityFortuneVoronoi.Collections
 
         protected void SwitchElements(int i, int j)
         {
-            object h = InnerList[i];
+            var h = InnerList[i];
             InnerList[i] = InnerList[j];
             InnerList[j] = h;
         }
@@ -85,7 +85,7 @@ namespace UnityFortuneVoronoi.Collections
         /// <returns>The smallest object</returns>
         public object Pop()
         {
-            object result = InnerList[0];
+            var result = InnerList[0];
             int p = 0, p1, p2, pn;
             InnerList[0] = InnerList[InnerList.Count - 1];
             InnerList.RemoveAt(InnerList.Count - 1);

@@ -62,7 +62,7 @@ namespace UnityFortuneVoronoi
 
         public static int[] GetIntArrayRange(int A, int B)
         {
-            int[] E = new int[B - A + 1];
+            var E = new int[B - A + 1];
             int i;
             for (i = A; i <= B; i++)
                 E[i - A] = i;
@@ -71,7 +71,7 @@ namespace UnityFortuneVoronoi
 
         public static int[] GetIntArrayConst(int A, int n)
         {
-            int[] E = new int[n];
+            var E = new int[n];
             int i;
             for (i = 0; i < n; i++)
                 E[i] = A;
@@ -90,16 +90,16 @@ namespace UnityFortuneVoronoi
 
         public static Array CopyToArray(ICollection L, Type T)
         {
-            Array Erg = Array.CreateInstance(T, L.Count);
+            var Erg = Array.CreateInstance(T, L.Count);
             L.CopyTo(Erg, 0);
             return Erg;
         }
 
         public static string[] HighLevelSplit(string S, params char[] C)
         {
-            ArrayList Erg = new ArrayList();
-            Stack CurrentBracket = new Stack();
-            int Pos = 0;
+            var Erg = new ArrayList();
+            var CurrentBracket = new Stack();
+            var Pos = 0;
             int i, c;
 
             for (i = 0; i < S.Length; i++)
@@ -194,7 +194,7 @@ namespace UnityFortuneVoronoi
 
         public static double[] DAMult(double[] A, double r)
         {
-            double[] E = new double[A.Length];
+            var E = new double[A.Length];
             int i;
             for (i = 0; i < E.Length; i++)
             {
@@ -207,7 +207,7 @@ namespace UnityFortuneVoronoi
         {
             if (A.Length != B.Length)
                 throw new Exception("Error in Skalar!");
-            double[] E = new double[A.Length];
+            var E = new double[A.Length];
             int i;
             for (i = 0; i < A.Length; i++)
             {
@@ -230,7 +230,7 @@ namespace UnityFortuneVoronoi
         public static double DASum(double[] A)
         {
             double Erg = 0;
-            foreach (double D in A)
+            foreach (var D in A)
             {
                 Erg += D;
             }
@@ -245,7 +245,7 @@ namespace UnityFortuneVoronoi
         public static double DAStdv(double[] A, double M)
         {
             double Erg = 0;
-            foreach (double D in A)
+            foreach (var D in A)
                 Erg += (M - D) * (M - D);
             return Erg / A.Length;
         }
@@ -319,8 +319,8 @@ namespace UnityFortuneVoronoi
             else
                 C = OldCol;
 
-            double min = 127.0 * (240.0 - saturation) / 240.0;
-            double max = 255.0 - 127.0 * (240.0 - saturation) / 240.0;
+            var min = 127.0 * (240.0 - saturation) / 240.0;
+            var max = 255.0 - 127.0 * (240.0 - saturation) / 240.0;
             if (brightness > 120)
             {
                 min = min + (255.0 - min) * (brightness - 120) / 120.0;
@@ -355,7 +355,7 @@ namespace UnityFortuneVoronoi
 
         public static Color HSBtoRGB(int hue, int saturation, int brightness)
         {
-            double[] C = HSBtoRGB(hue, saturation, brightness, null);
+            var C = HSBtoRGB(hue, saturation, brightness, null);
             return new Color((int) C[0], (int) C[1], (int) C[2]);
         }
 
@@ -370,7 +370,7 @@ namespace UnityFortuneVoronoi
                 if (y < 0)
                     return Math.PI * 3.0 / 2.0;
             }
-            double atan = Math.Atan(y / x);
+            var atan = Math.Atan(y / x);
             if (x > 0 && y >= 0)
                 return atan;
             if (x > 0 && y < 0)

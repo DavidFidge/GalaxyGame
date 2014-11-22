@@ -13,7 +13,7 @@ namespace UnityFortuneVoronoi
         {
             if (!(obj is VEvent))
                 throw new ArgumentException("obj not VEvent!");
-            int i = Y.CompareTo(((VEvent) obj).Y);
+            var i = Y.CompareTo(((VEvent) obj).Y);
             if (i != 0)
                 return i;
             return X.CompareTo(((VEvent) obj).X);

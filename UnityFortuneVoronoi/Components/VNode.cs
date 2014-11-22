@@ -48,7 +48,7 @@ namespace UnityFortuneVoronoi.Components
 
         public static VDataNode FirstDataNode(VNode Root)
         {
-            VNode C = Root;
+            var C = Root;
             while (C.Left != null)
                 C = C.Left;
             return (VDataNode) C;
@@ -58,14 +58,20 @@ namespace UnityFortuneVoronoi.Components
         {
             VNode C = Current;
             //1. Up
-
-            if (C.Parent == null)
-                return null;
-            if (C.Parent.Left == C)
+            do
             {
-                C = C.Parent;
-            }
-            C = C.Parent;
+                if (C.Parent == null)
+                    return null;
+                if (C.Parent.Left == C)
+                {
+                    C = C.Parent;
+                }
+                else
+                {
+                    C = C.Parent;
+                    break;
+                }
+            } while (true);
 
             //2. One Left
             C = C.Left;
@@ -79,14 +85,20 @@ namespace UnityFortuneVoronoi.Components
         {
             VNode C = Current;
             //1. Up
-
-            if (C.Parent == null)
-                return null;
-            if (C.Parent.Right == C)
+            do
             {
-                C = C.Parent;
-            }
-            C = C.Parent;
+                if (C.Parent == null)
+                    return null;
+                if (C.Parent.Right == C)
+                {
+                    C = C.Parent;
+                }
+                else
+                {
+                    C = C.Parent;
+                    break;
+                }
+            } while (true);
 
             //2. One Right
             C = C.Right;
@@ -100,21 +112,27 @@ namespace UnityFortuneVoronoi.Components
         {
             VNode C = Current;
             //1. Up
-
-            if (C.Parent == null)
-                throw new Exception("No Left Leaf found!");
-            if (C.Parent.Right == C)
+            do
             {
-                C = C.Parent;
-            }
-            C = C.Parent;
+                if (C.Parent == null)
+                    throw new Exception("No Left Leaf found!");
+                if (C.Parent.Right == C)
+                {
+                    C = C.Parent;
+                }
+                else
+                {
+                    C = C.Parent;
+                    break;
+                }
+            } while (true);
 
             return (VEdgeNode) C;
         }
 
         public static VDataNode FindDataNode(VNode Root, double ys, double x)
         {
-            VNode C = Root;
+            var C = Root;
             do
             {
                 if (C is VDataNode)
@@ -143,7 +161,7 @@ namespace UnityFortuneVoronoi.Components
             //1. Find the node to be replaced
             VNode C = FindDataNode(Root, ys, e.DataPoint[0]);
             //2. Create the subtree (ONE Edge, but two VEdgeNodes)
-            VoronoiEdge VE = new VoronoiEdge();
+            var VE = new VoronoiEdge();
             VE.LeftData = ((VDataNode) C).DataPoint;
             VE.RightData = e.DataPoint;
             VE.VVertexA = Fortune.VVUnkown;
@@ -214,7 +232,7 @@ namespace UnityFortuneVoronoi.Components
                 c
             };
             //1. Create the new Vertex
-            Vector2 VNew = new Vector2(e.Center[0], e.Center[1]);
+            var VNew = new Vector2(e.Center[0], e.Center[1]);
 //			VNew[0] = Fortune.ParabolicCut(a.DataPoint[0],a.DataPoint[1],c.DataPoint[0],c.DataPoint[1],ys);
 //			VNew[1] = (ys + a.DataPoint[1])/2 - 1/(2*(ys-a.DataPoint[1]))*(VNew[0]-a.DataPoint[0])*(VNew[0]-a.DataPoint[0]);
             VG.Vertizes.Add(VNew);
@@ -254,13 +272,13 @@ namespace UnityFortuneVoronoi.Components
             //}
 
             //2. Replace eo by new Edge
-            VoronoiEdge VE = new VoronoiEdge();
+            var VE = new VoronoiEdge();
             VE.LeftData = a.DataPoint;
             VE.RightData = c.DataPoint;
             VE.AddVertex(VNew);
             VG.Edges.Add(VE);
 
-            VEdgeNode VEN = new VEdgeNode(VE, false);
+            var VEN = new VEdgeNode(VE, false);
             VEN.Left = eo.Left;
             VEN.Right = eo.Right;
             if (eo.Parent == null)
@@ -271,14 +289,14 @@ namespace UnityFortuneVoronoi.Components
 
         public static VCircleEvent CircleCheckDataNode(VDataNode n, double ys)
         {
-            VDataNode l = LeftDataNode(n);
-            VDataNode r = RightDataNode(n);
+            var l = LeftDataNode(n);
+            var r = RightDataNode(n);
             if (l == null || r == null || l.DataPoint == r.DataPoint || l.DataPoint == n.DataPoint || n.DataPoint == r.DataPoint)
                 return null;
             if (MathTools.ccw(l.DataPoint[0], l.DataPoint[1], n.DataPoint[0], n.DataPoint[1], r.DataPoint[0], r.DataPoint[1], false) <= 0)
                 return null;
-            Vector2 Center = Fortune.CircumCircleCenter(l.DataPoint, n.DataPoint, r.DataPoint);
-            VCircleEvent VC = new VCircleEvent();
+            var Center = Fortune.CircumCircleCenter(l.DataPoint, n.DataPoint, r.DataPoint);
+            var VC = new VCircleEvent();
             VC.NodeN = n;
             VC.NodeL = l;
             VC.NodeR = r;
@@ -293,7 +311,7 @@ namespace UnityFortuneVoronoi.Components
         {
             if (Root is VDataNode)
                 return;
-            VEdgeNode VE = Root as VEdgeNode;
+            var VE = Root as VEdgeNode;
             while (VE.Edge.VVertexB == Fortune.VVUnkown)
             {
                 VE.Edge.AddVertex(Fortune.VVInfinite);
@@ -301,7 +319,7 @@ namespace UnityFortuneVoronoi.Components
             }
             if (VE.Flipped)
             {
-                Vector2 T = VE.Edge.LeftData;
+                var T = VE.Edge.LeftData;
                 VE.Edge.LeftData = VE.Edge.RightData;
                 VE.Edge.RightData = T;
             }

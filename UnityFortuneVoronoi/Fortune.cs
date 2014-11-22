@@ -12,8 +12,8 @@ namespace UnityFortuneVoronoi
 
     public abstract class Fortune
     {
-        public static readonly Vector2 VVInfinite = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
-        public static readonly Vector2 VVUnkown = new Vector2(float.NaN, float.NaN);
+        public static readonly Vector2 VVInfinite = new Vector2(float.MinValue, float.MinValue);
+        public static readonly Vector2 VVUnkown = new Vector2(float.MaxValue, float.MaxValue);
 
         internal static double ParabolicCut(double x1, double y1, double x2, double y2, double ys)
         {
@@ -28,17 +28,17 @@ namespace UnityFortuneVoronoi
                 return x1;
             if (Math.Abs(y2 - ys) < 1e-10)
                 return x2;
-            double a1 = 1 / (2 * (y1 - ys));
-            double a2 = 1 / (2 * (y2 - ys));
+            var a1 = 1 / (2 * (y1 - ys));
+            var a2 = 1 / (2 * (y2 - ys));
             if (Math.Abs(a1 - a2) < 1e-10)
                 return (x1 + x2) / 2;
-            double xs1 = 0.5 / (2 * a1 - 2 * a2) * (4 * a1 * x1 - 4 * a2 * x2 + 2 * Math.Sqrt(-8 * a1 * x1 * a2 * x2 - 2 * a1 * y1 + 2 * a1 * y2 + 4 * a1 * a2 * x2 * x2 + 2 * a2 * y1 + 4 * a2 * a1 * x1 * x1 - 2 * a2 * y2));
-            double xs2 = 0.5 / (2 * a1 - 2 * a2) * (4 * a1 * x1 - 4 * a2 * x2 - 2 * Math.Sqrt(-8 * a1 * x1 * a2 * x2 - 2 * a1 * y1 + 2 * a1 * y2 + 4 * a1 * a2 * x2 * x2 + 2 * a2 * y1 + 4 * a2 * a1 * x1 * x1 - 2 * a2 * y2));
+            var xs1 = 0.5 / (2 * a1 - 2 * a2) * (4 * a1 * x1 - 4 * a2 * x2 + 2 * Math.Sqrt(-8 * a1 * x1 * a2 * x2 - 2 * a1 * y1 + 2 * a1 * y2 + 4 * a1 * a2 * x2 * x2 + 2 * a2 * y1 + 4 * a2 * a1 * x1 * x1 - 2 * a2 * y2));
+            var xs2 = 0.5 / (2 * a1 - 2 * a2) * (4 * a1 * x1 - 4 * a2 * x2 - 2 * Math.Sqrt(-8 * a1 * x1 * a2 * x2 - 2 * a1 * y1 + 2 * a1 * y2 + 4 * a1 * a2 * x2 * x2 + 2 * a2 * y1 + 4 * a2 * a1 * x1 * x1 - 2 * a2 * y2));
             xs1 = Math.Round(xs1, 10);
             xs2 = Math.Round(xs2, 10);
             if (xs1 > xs2)
             {
-                double h = xs1;
+                var h = xs1;
                 xs1 = xs2;
                 xs2 = h;
             }
@@ -81,24 +81,24 @@ namespace UnityFortuneVoronoi
                 wy = -1;
             }
 
-            double alpha = (wy * (vx - tx) - wx * (vy - ty)) / (ux * wy - wx * uy);
+            var alpha = (wy * (vx - tx) - wx * (vy - ty)) / (ux * wy - wx * uy);
 
             return new Vector2((float) (tx + alpha * ux), (float) (ty + alpha * uy));
         }
 
-        public static VoronoiGraph ComputeVoronoiGraph(IEnumerable Datapoints)
+        public static VoronoiGraph ComputeVoronoiGraph(IEnumerable<Vector2> Datapoints)
         {
-            BinaryPriorityQueue PQ = new BinaryPriorityQueue();
-            Hashtable CurrentCircles = new Hashtable();
-            VoronoiGraph VG = new VoronoiGraph();
+            var PQ = new BinaryPriorityQueue();
+            var CurrentCircles = new Hashtable();
+            var VG = new VoronoiGraph();
             VNode RootNode = null;
-            foreach (Vector2 V in Datapoints)
+            foreach (var V in Datapoints)
             {
                 PQ.Push(new VDataEvent(V));
             }
             while (PQ.Count > 0)
             {
-                VEvent VE = PQ.Pop() as VEvent;
+                var VE = PQ.Pop() as VEvent;
                 VDataNode[] CircleCheckList;
                 if (VE is VDataEvent)
                 {
@@ -112,14 +112,14 @@ namespace UnityFortuneVoronoi
                     RootNode = VNode.ProcessCircleEvent(VE as VCircleEvent, RootNode, VG, VE.Y, out CircleCheckList);
                 }
                 else throw new Exception("Got event of type " + VE.GetType() + "!");
-                foreach (VDataNode VD in CircleCheckList)
+                foreach (var VD in CircleCheckList)
                 {
                     if (CurrentCircles.ContainsKey(VD))
                     {
                         ((VCircleEvent) CurrentCircles[VD]).Valid = false;
                         CurrentCircles.Remove(VD);
                     }
-                    VCircleEvent VCE = VNode.CircleCheckDataNode(VD, VE.Y);
+                    var VCE = VNode.CircleCheckDataNode(VD, VE.Y);
                     if (VCE != null)
                     {
                         PQ.Push(VCE);
@@ -128,7 +128,7 @@ namespace UnityFortuneVoronoi
                 }
                 if (VE is VDataEvent)
                 {
-                    Vector2 DP = ((VDataEvent) VE).DataPoint;
+                    var DP = ((VDataEvent) VE).DataPoint;
                     foreach (VCircleEvent VCE in CurrentCircles.Values)
                     {
                         if (MathTools.Dist(DP[0], DP[1], VCE.Center[0], VCE.Center[1]) < VCE.Y - VCE.Center[1] && Math.Abs(MathTools.Dist(DP[0], DP[1], VCE.Center[0], VCE.Center[1]) - (VCE.Y - VCE.Center[1])) > 1e-10)
@@ -137,7 +137,7 @@ namespace UnityFortuneVoronoi
                 }
             }
             VNode.CleanUpTree(RootNode);
-            foreach (VoronoiEdge VE in VG.Edges)
+            foreach (var VE in VG.Edges)
             {
                 if (VE.Done)
                     continue;
@@ -146,21 +146,21 @@ namespace UnityFortuneVoronoi
                     VE.AddVertex(VVInfinite);
                     if (Math.Abs(VE.LeftData[1] - VE.RightData[1]) < 1e-10 && VE.LeftData[0] < VE.RightData[0])
                     {
-                        Vector2 T = VE.LeftData;
+                        var T = VE.LeftData;
                         VE.LeftData = VE.RightData;
                         VE.RightData = T;
                     }
                 }
             }
 
-            ArrayList MinuteEdges = new ArrayList();
-            foreach (VoronoiEdge VE in VG.Edges)
+            var MinuteEdges = new ArrayList();
+            foreach (var VE in VG.Edges)
             {
                 if (!VE.IsPartlyInfinite && VE.VVertexA.Equals(VE.VVertexB))
                 {
                     MinuteEdges.Add(VE);
                     // prevent rounding errors from expanding to holes
-                    foreach (VoronoiEdge VE2 in VG.Edges)
+                    foreach (var VE2 in VG.Edges)
                     {
                         if (VE2.VVertexA.Equals(VE.VVertexA))
                             VE2.VVertexA = VE.VVertexA;
@@ -177,13 +177,13 @@ namespace UnityFortuneVoronoi
 
         public static VoronoiGraph FilterVG(VoronoiGraph VG, double minLeftRightDist)
         {
-            VoronoiGraph VGErg = new VoronoiGraph();
-            foreach (VoronoiEdge VE in VG.Edges)
+            var VGErg = new VoronoiGraph();
+            foreach (var VE in VG.Edges)
             {
                 if (Math.Sqrt(Vector2.Distance(VE.LeftData, VE.RightData)) >= minLeftRightDist)
                     VGErg.Edges.Add(VE);
             }
-            foreach (VoronoiEdge VE in VGErg.Edges)
+            foreach (var VE in VGErg.Edges)
             {
                 VGErg.Vertizes.Add(VE.VVertexA);
                 VGErg.Vertizes.Add(VE.VVertexB);

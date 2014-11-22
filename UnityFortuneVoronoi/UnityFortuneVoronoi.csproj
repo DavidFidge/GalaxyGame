@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fortune.cs" />
+    <Compile Include="Interfaces\IVisitor.cs" />
     <Compile Include="Interfaces\IPriorityQueue.cs" />
     <Compile Include="Collections\PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

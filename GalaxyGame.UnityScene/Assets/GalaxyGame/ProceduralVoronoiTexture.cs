@@ -36,7 +36,7 @@ namespace Assets.GalaxyGame
             }
             var v = new Delaunay.Voronoi(points, colors, new Rect(0, 0, 1000, 1000));
 
-            var texture2D = new Texture2D(1000, 1000);
+            var texture2D = new Texture2D(1000, 1000);           
 
             var colours = new Color[1000 * 1000];
 

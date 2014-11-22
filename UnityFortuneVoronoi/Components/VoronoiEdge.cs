@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityFortuneVoronoi.Interfaces;
 
 namespace UnityFortuneVoronoi.Components
 {
@@ -70,6 +71,11 @@ namespace UnityFortuneVoronoi.Components
                     return double.PositiveInfinity;
                 return Math.Sqrt(Vector2.Distance(VVertexA, VVertexB));
             }
+        }
+
+        public void Accept(IVisitor<VoronoiEdge> visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }
