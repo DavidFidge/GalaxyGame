@@ -7,6 +7,29 @@ namespace UnityHelpers.Extensions
 {
     public static class TextureExtensions
     {
+        public static void DrawPoint(this Texture2D tex, Point p, int r, Color col)
+        {
+            tex.DrawPoint(p.x, p.y, r, col);
+        }
+
+        public static void DrawPoint(this Texture2D tex, Vector2 v, int r, Color col)
+        {
+            tex.DrawPoint((int) v.x, (int) v.y, r, col);
+        }
+
+        public static void DrawPoint(this Texture2D tex, int x, int y, int r, Color col)
+        {
+            if (r == 0)
+            {
+                tex.SetPixel(x, y, col);
+                return;
+            }
+
+            for (var i = -r; i < r + 1; i++)
+                for (var j = -r; j < r + 1; j++)
+                    tex.SetPixel(x + i, y + j, col);
+        }
+
         public static void DrawLine(this Texture2D tex, Point p0, Point p1, Color col)
         {
             tex.DrawLine(p0.x, p0.y, p1.x, p1.y, col);

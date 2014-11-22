@@ -34,11 +34,27 @@ namespace Assets.GalaxyGame
 
             var texture2D = new Texture2D(1000, 1000);
 
-            var drawLineVisitor = new DrawLineVisitor2(texture2D, Color.red);
+            var drawLineVisitor = new DrawLineVisitor(texture2D, Color.red);
 
             foreach (var edge in v.Edges)
             {
                 edge.Accept(drawLineVisitor);
+            }
+
+            foreach (var vector2 in v.Vertizes)
+            {
+                texture2D.DrawPoint(vector2, 2, Color.black);
+            }
+
+            foreach (var vector2 in points)
+            {
+                texture2D.DrawPoint(vector2, 1, Color.blue);
+            }
+
+
+            foreach (var edge in v.Edges)
+            {
+                texture2D.DrawPoint(edge.FixedPoint, 1, Color.blue);
             }
 
             texture2D.Apply();
@@ -64,38 +80,38 @@ namespace Assets.GalaxyGame
         }
     }
 
-    public class DrawLineVisitor2 : IVisitor<VoronoiEdge>
-    {
-        private readonly Texture2D _texture;
-        private readonly Color _color;
+    //public class DrawLineVisitor2 : IVisitor<VoronoiEdge>
+    //{
+    //    private readonly Texture2D _texture;
+    //    private readonly Color _color;
 
-        public DrawLineVisitor2(Texture2D texture, Color color)
-        {
-            _texture = texture;
-            _color = color;
-        }
+    //    public DrawLineVisitor2(Texture2D texture, Color color)
+    //    {
+    //        _texture = texture;
+    //        _color = color;
+    //    }
 
-        public void Visit(VoronoiEdge edge)
-        {
-            Constrain(ref edge.VVertexA);
-            Constrain(ref edge.VVertexB);
+    //    public void Visit(VoronoiEdge edge)
+    //    {
+    //        Constrain(ref edge.VVertexA);
+    //        Constrain(ref edge.VVertexB);
 
-            _texture.DrawLine(edge.VVertexA, edge.VVertexB, _color);
-        }
+    //        _texture.DrawLine(edge.VVertexA, edge.VVertexB, _color);
+    //    }
 
-        private void Constrain(ref Vector2 v)
-        {
-            if (v.x < 0)
-                v.x = 0;
-            if (v.x > 1000f)
-                v.x = 1000f;
+    //    private void Constrain(ref Vector2 v)
+    //    {
+    //        if (v.x < 0)
+    //            v.x = 0;
+    //        if (v.x > 1000f)
+    //            v.x = 1000f;
 
-            if (v.y < 0)
-                v.y = 0;
-            if (v.y > 1000f)
-                v.y = 1000f;
+    //        if (v.y < 0)
+    //            v.y = 0;
+    //        if (v.y > 1000f)
+    //            v.y = 1000f;
 
-        }
+    //    }
 
-    }
+    //}
 }
