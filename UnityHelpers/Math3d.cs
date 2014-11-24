@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityHelpers.Extensions;
 using Object = UnityEngine.Object;
 
 // http://wiki.unity3d.com/index.php/3d_Math_functions
@@ -164,6 +165,43 @@ namespace UnityHelpers
             }
 
             return false;
+        }
+
+        //Calculate the intersection point of two lines. Returns true if lines intersect, otherwise false.
+        //Note that in 3d, two lines do not intersect most of the time. So if the two lines are not in the 
+        //same plane, use ClosestPointsOnTwoLines() instead.
+        public static bool LineLineIntersectionPoints(out Vector3 intersection, Vector3 linePoint1, Vector3 linePoint2, Vector3 linePoint3, Vector3 linePoint4)
+        {
+            intersection = Vector3.zero;
+
+            var a = linePoint2 - linePoint1;
+            var b = linePoint4 - linePoint3;
+            var c = linePoint3 - linePoint1;
+
+            var crossVecCtoB = Vector3.Cross(c, b);
+            var crossVecAtoB = Vector3.Cross(a, b);
+
+            //Note: sqrMagnitude does x*x+y*y+z*z on the input vector.
+            var s = Vector3.Dot(crossVecCtoB, crossVecAtoB) / crossVecAtoB.sqrMagnitude;
+
+            if ((s >= 0.0f) && (s <= 1.0f))
+            {
+                intersection = linePoint1 + (a * s);
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool LineLineIntersectionPoints(out Vector2 intersection, Vector2 linePoint1, Vector2 linePoint2, Vector2 linePoint3, Vector2 linePoint4)
+        {
+            var intersection3 = Vector3.zero;
+
+            var result = LineLineIntersectionPoints(out intersection3, linePoint1.Vector3FromVector2(1), linePoint2.Vector3FromVector2(1), linePoint3.Vector3FromVector2(1), linePoint4.Vector3FromVector2(1));
+
+            intersection = intersection3.Vector2FromVector3();
+
+            return result;
         }
 
         //Two non-parallel lines which may or may not touch each other have a point on each line which are closest
@@ -532,18 +570,18 @@ namespace UnityHelpers
             Vector3 mousePosition;
 
 #if UNITY_EDITOR
-		if(Camera.current != null){
+        if(Camera.current != null){
  
-			currentCamera = Camera.current;
-		}
+            currentCamera = Camera.current;
+        }
  
-		else{
+        else{
  
-			currentCamera = Camera.main;
-		}
+            currentCamera = Camera.main;
+        }
  
-		//convert format because y is flipped
-		mousePosition = new Vector3(Event.current.mousePosition.x, currentCamera.pixelHeight - Event.current.mousePosition.y, 0f);
+        //convert format because y is flipped
+        mousePosition = new Vector3(Event.current.mousePosition.x, currentCamera.pixelHeight - Event.current.mousePosition.y, 0f);
  
 #else
             currentCamera = Camera.main;
@@ -571,18 +609,18 @@ namespace UnityHelpers
             Vector3 mousePosition;
 
 #if UNITY_EDITOR
-		if(Camera.current != null){
+        if(Camera.current != null){
  
-			currentCamera = Camera.current;
-		}
+            currentCamera = Camera.current;
+        }
  
-		else{
+        else{
  
-			currentCamera = Camera.main;
-		}
+            currentCamera = Camera.main;
+        }
  
-		//convert format because y is flipped
-		mousePosition = new Vector3(Event.current.mousePosition.x, currentCamera.pixelHeight - Event.current.mousePosition.y, 0f);
+        //convert format because y is flipped
+        mousePosition = new Vector3(Event.current.mousePosition.x, currentCamera.pixelHeight - Event.current.mousePosition.y, 0f);
 #else
             currentCamera = Camera.main;
             mousePosition = Input.mousePosition;
@@ -634,6 +672,16 @@ namespace UnityHelpers
             return true;
         }
 
+        public static bool IsLineInRectangle(Vector2 linePoint1, Vector2 linePoint2, Vector2 rectA, Vector2 rectB, Vector2 rectC, Vector2 rectD)
+        {
+            return IsLineInRectangle(linePoint1.Vector3FromVector2(), linePoint2.Vector3FromVector2(), rectA.Vector3FromVector2(), rectB.Vector3FromVector2(), rectC.Vector3FromVector2(), rectD.Vector3FromVector2());
+        }
+
+        public static bool IsLineInRectangle(Vector2 linePoint1, Vector2 linePoint2, Rect rect)
+        {
+            return IsLineInRectangle(linePoint1.Vector3FromVector2(), linePoint2.Vector3FromVector2(), rect.RectLeftTop().Vector3FromVector2(), rect.RectRightTop().Vector3FromVector2(), rect.RectRightBottom().Vector3FromVector2(), rect.RectLeftBottom().Vector3FromVector2());
+        }
+
         //Returns true if "point" is in a rectangle mad up of RectA to RectD. The line point is assumed to be on the same 
         //plane as the rectangle. If the point is not on the plane, use ProjectPointOnPlane() first.
         public static bool IsPointInRectangle(Vector3 point, Vector3 rectA, Vector3 rectC, Vector3 rectB, Vector3 rectD)
@@ -667,6 +715,16 @@ namespace UnityHelpers
             }
 
             return false;
+        }
+
+        public static bool IsPointInRectangle(Vector2 linePoint1, Vector2 rectA, Vector2 rectB, Vector2 rectC, Vector2 rectD)
+        {
+            return IsPointInRectangle(linePoint1.Vector3FromVector2(), rectA.Vector3FromVector2(), rectB.Vector3FromVector2(), rectC.Vector3FromVector2(), rectD.Vector3FromVector2());
+        }
+
+        public static bool IsPointInRectangle(Vector2 linePoint1, Rect rect)
+        {
+            return IsPointInRectangle(linePoint1.Vector3FromVector2(), rect.RectLeftTop().Vector3FromVector2(), rect.RectRightTop().Vector3FromVector2(), rect.RectRightBottom().Vector3FromVector2(), rect.RectLeftBottom().Vector3FromVector2());
         }
 
         //Returns true if line segment made up of pointA1 and pointA2 is crossing line segment made up of
@@ -811,6 +869,23 @@ namespace UnityHelpers
             y = Py + (C * (x - Px));
 
             return y;
+        }
+
+        public bool PointOnLineSegment(Vector3 a, Vector3 b, Vector3 p)
+        {
+
+    //        def isBetween(a, b, c):
+    //crossproduct = (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y)
+    //if abs(crossproduct) > epsilon : return False   # (or != 0 if using integers)
+
+    //dotproduct = (c.x - a.x) * (b.x - a.x) + (c.y - a.y)*(b.y - a.y)
+    //if dotproduct < 0 : return False
+
+    //squaredlengthba = (b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y)
+    //if dotproduct > squaredlengthba: return False
+
+    //return True
+            Vector3.Cross()
         }
     }
 }

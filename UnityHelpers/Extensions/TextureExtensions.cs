@@ -83,7 +83,8 @@ namespace UnityHelpers.Extensions
                     }
                     x0 += stepx;
                     fraction += dy;
-                    tex.SetPixel(x0, y0, col);
+                    if (x0 < 0 || y0 < 0)
+                        tex.SetPixel(x0, y0, col);
                 }
             }
             else
@@ -101,6 +102,66 @@ namespace UnityHelpers.Extensions
                     tex.SetPixel(x0, y0, col);
                 }
             }
+        }
+
+        public static bool DrawLineConstrained(this Texture2D tex, int x0, int y0, int x1, int y1, Color col)
+        {
+            var rect = new Rect(0, 0, tex.width, tex.height);
+
+            var point0InRect = Math3d.IsPointInRectangle(new Vector2(x0, y0), rect);
+            var point1InRect = Math3d.IsPointInRectangle(new Vector2(x1, y1), rect);
+
+            if (point0InRect && point1InRect)
+                DrawLine(tex, x0, y0, x1, y1, col);
+
+            Vector2 intersection;
+
+            var list = new HashSet<Vector2>();
+
+            if (Math3d.LineLineIntersectionPoints(out intersection, rect.RectLeftBottom(), rect.RectLeftTop(), new Vector2(x0, y0), new Vector2(x1, y1)))
+                list.Add(intersection);
+
+            if (Math3d.LineLineIntersectionPoints(out intersection, rect.RectLeftTop(), rect.RectRightTop(), new Vector2(x0, y0), new Vector2(x1, y1)))
+                list.Add(intersection);
+
+            if (Math3d.LineLineIntersectionPoints(out intersection, rect.RectRightTop(), rect.RectRightBottom(), new Vector2(x0, y0), new Vector2(x1, y1)))
+                list.Add(intersection);
+
+            if (Math3d.LineLineIntersectionPoints(out intersection, rect.RectRightBottom(), rect.RectLeftBottom(), new Vector2(x0, y0), new Vector2(x1, y1)))
+                list.Add(intersection);
+
+            if (list.Count >= 1)
+            {
+                if (x0 == x1 && x0 == 0)
+                    
+
+
+            }
+
+            if (list.Count == 1)
+            {
+                Vector2 inRectPoint;
+                //find the point that lies inside
+                if (point0InRect)
+                {
+                    inRectPoint.x = x0;
+                    inRectPoint.y = y0;
+                }
+                else if (point1InRect)
+                {
+                    inRectPoint.x = x1;
+                    inRectPoint.y = y1;
+                }
+                else
+                {
+                    inRectPoint.x = (int)list.First().x;
+                    inRectPoint.y = (int)list.First().y;
+                }
+
+                DrawLine(tex, list.First(), inRectPoint, col);
+            }
+            if (list.Count == 2)
+                DrawLine(tex, list.First(), list.Skip(1).First(), col);
         }
 
         public static void DrawCircle(this Texture2D tex, Vector2 v, int r, Color col)

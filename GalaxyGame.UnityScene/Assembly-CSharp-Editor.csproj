@@ -130,6 +130,9 @@
  <Reference Include="UnitySignalR">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/UnitySignalR.dll</HintPath>
  </Reference>
+ <Reference Include="VoronoiTest">
+ <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/VoronoiTest.dll</HintPath>
+ </Reference>
  <Reference Include="websocket-sharp">
  <HintPath>C:/dev/GalaxyGame/GalaxyGame/GalaxyGame.UnityScene/Assets/libs/websocket-sharp.dll</HintPath>
  </Reference>

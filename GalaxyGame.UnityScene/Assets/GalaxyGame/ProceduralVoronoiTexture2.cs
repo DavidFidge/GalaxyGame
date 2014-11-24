@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BenTools.Mathematics;
 using UnityEngine;
-using UnityFortuneVoronoi;
-using UnityFortuneVoronoi.Components;
-using UnityFortuneVoronoi.Interfaces;
+
 using UnityHelpers.Extensions;
 using Random = UnityEngine.Random;
 
@@ -20,13 +19,13 @@ namespace Assets.GalaxyGame
 
         public void Generate()
         {
-            var points = new List<Vector2>();
+            var points = new List<Vector>();
 
-            for (var i = 0; i < 50; i++)
+            for (var i = 0; i < 5; i++)
             {
-                points.Add(new Vector2(
-                    Random.Range(0, 1000),
-                    Random.Range(0, 1000))
+                points.Add(new Vector(
+                    (double)Random.Range(0, 1000),
+                    (double)Random.Range(0, 1000))
                     );
             }
 
@@ -43,18 +42,18 @@ namespace Assets.GalaxyGame
 
             foreach (var vector2 in v.Vertizes)
             {
-                texture2D.DrawPoint(vector2, 2, Color.black);
+                texture2D.DrawPoint(vector2.Vector2, 2, Color.black);
             }
 
             foreach (var vector2 in points)
             {
-                texture2D.DrawPoint(vector2, 1, Color.blue);
+                texture2D.DrawPoint(vector2.Vector2, 1, Color.blue);
             }
 
 
             foreach (var edge in v.Edges)
             {
-                texture2D.DrawPoint(edge.FixedPoint, 1, Color.blue);
+                texture2D.DrawPoint(edge.FixedPoint.Vector2, 1, Color.blue);
             }
 
             texture2D.Apply();
@@ -63,7 +62,7 @@ namespace Assets.GalaxyGame
         }
     }
 
-    public class DrawLineVisitor : IVisitor<VoronoiEdge>
+    public class DrawLineVisitor : VoronoiEdge.IVisitor<VoronoiEdge>
     {
         private readonly Texture2D _texture;
         private readonly Color _color;
@@ -76,7 +75,25 @@ namespace Assets.GalaxyGame
 
         public void Visit(VoronoiEdge edge)
         {
-            _texture.DrawLine(edge.LeftData, edge.RightData, _color);
+            //_texture.DrawLine(edge.LeftData.Vector2, edge.RightData.Vector2, _color);
+            if (!edge.IsPartlyInfinite)
+                _texture.DrawLine(Constrain(edge.VVertexA.Vector2), Constrain(edge.VVertexB.Vector2), _color);
+            //_texture.DrawLine(edge.FixedPoint.Vector2, edge.RightData.Vector2, _color);
+        }
+
+        private Vector2 Constrain(Vector2 v)
+        {
+            //if (v.x < 0)
+            //    v.x = 0;
+            //if (v.x > 1000f)
+            //    v.x = 1000f;
+
+            //if (v.y < 0)
+            //    v.y = 0;
+            //if (v.y > 1000f)
+            //    v.y = 1000f;
+
+            return v;
         }
     }
 
